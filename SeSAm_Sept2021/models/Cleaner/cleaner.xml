@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMLSeSAmModel version="0.2" globalAssert="true"
+    compileDebugFunction="true" runDebugFunction="true" optimize="true"
+    inline="true" closures="false" xmlns="http://www.simsesam.de/schemas/model">
+    <ressourceClass name="Waste" id="RessourceClass_0">
+        <features>
+            <buildin xmlns="">Standard Functions</buildin>
+            <buildin xmlns="">Standard Object Functions</buildin>
+            <features id="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeature" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0" radius="5.0"
+                    imagePath="bilder/staub.png"
+                    drawPriority="3.0" x="0.0" y="0.0"/>
+            </features>
+        </features>
+    </ressourceClass>
+    <ressourceClass name="Dustbin" id="RessourceClass_1">
+        <features>
+            <buildin xmlns="">Standard Functions</buildin>
+            <buildin xmlns="">Standard Object Functions</buildin>
+            <features id="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeature" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0" radius="5.0"
+                    imagePath="bilder/papierkorb.png"
+                    drawPriority="3.0" x="0.0" y="0.0"/>
+            </features>
+        </features>
+    </ressourceClass>
+    <ressourceClass name="Charging Station" id="RessourceClass_2">
+        <features>
+            <buildin xmlns="">Standard Functions</buildin>
+            <buildin xmlns="">Standard Object Functions</buildin>
+            <features id="SpatialInfoObjectFeatureClass_2"
+                xsi:type="XMLSpatialInfoFeature" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0" radius="5.0"
+                    imagePath="bilder/ladestation.png"
+                    drawPriority="3.0" x="0.0" y="0.0"/>
+            </features>
+        </features>
+    </ressourceClass>
+    <agentClass name="Cleaner" id="ActivityAgentClass_0">
+        <features>
+            <buildin xmlns="">Standard Functions</buildin>
+            <buildin xmlns="">Standard Object Functions</buildin>
+            <features id="SpatialInfoObjectFeatureClass_3"
+                xsi:type="XMLSpatialInfoFeature" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0" radius="5.0"
+                    imagePath="staubsauger.png"
+                    drawPriority="3.0" x="0.0" y="0.0"/>
+            </features>
+        </features>
+        <bodyClass>
+            <bodyVariableClass id="BodyVariableClass_0">
+                <variableClass name="Energy" id="VariableClass_0"
+                    writeable="true" external="false" partOfName="false">
+                    <doubleType/>
+                    <defaultValue>
+                        <double value="100.0"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_1">
+                <variableClass name="Position Of Dust"
+                    id="VariableClass_1" writeable="true"
+                    external="false" partOfName="false">
+                    <position2DType/>
+                    <defaultValue>
+                        <position2D x="0.0" y="0.0"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_2">
+                <variableClass name="Carries Waste" id="VariableClass_2"
+                    writeable="true" external="false" partOfName="false">
+                    <booleanType/>
+                    <defaultValue>
+                        <boolean value="false"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_3">
+                <variableClass name="Arrived at Charge"
+                    id="VariableClass_3" writeable="true"
+                    external="false" partOfName="false">
+                    <booleanType/>
+                    <defaultValue>
+                        <boolean value="false"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_4">
+                <variableClass name="Currently Observed Waste"
+                    id="VariableClass_4" writeable="true"
+                    external="false" partOfName="false">
+                    <simObjectType/>
+                    <defaultValue>
+                        <simObject/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+        </bodyClass>
+        <reasoning id="ActivityReasoningEngine_0">
+            <composedActivity name="Complete Reasoning" id="ActivityGraph_0">
+                <entryActivity name="Entry Activity"
+                    id="EntryActivityGraphLeaf_0" x="175" y="-7"
+                    width="15" height="15"/>
+                <exitActivity name="Exit Activity"
+                    id="ExitActivityGraphLeaf_0" x="440" y="-15"
+                    width="15" height="15"/>
+                <emergencyActivity name="Emergency Activity"
+                    id="EmergencyActivityGraphLeaf_0" x="235" y="0"
+                    width="130" height="50"/>
+                <actionActivity name="Move To Charge"
+                    id="ActionActivityGraphLeaf_0" x="565" y="94"
+                    width="188" height="70" type="state like">
+                    <backgroundColor red="153" green="204" blue="255"/>
+                    <actionRule>
+                        <action>
+                            <call functionName="MoveTowardsPos">
+                                <call functionName="GetMySpatialInfo"/>
+                                <call functionName="GetPosition">
+                                    <call functionName="GetSpatialInfo">
+                                    <call functionName="GetFirst">
+                                    <call functionName="GetAllObjectsOfType">
+                                    <objectClassID id="RessourceClass_2"/>
+                                    <boolean value="true"/>
+                                    <boolean value="true"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                </call>
+                                <call functionName="GetSpeed">
+                                    <call functionName="GetMySpatialInfo"/>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="If Then Else">
+                                <call functionName="Equal">
+                                    <call functionName="GetMyPosition"/>
+                                    <call functionName="GetPosition">
+                                    <call functionName="GetSpatialInfo">
+                                    <call functionName="GetFirst">
+                                    <call functionName="GetAllObjectsOfType">
+                                    <objectClassID id="RessourceClass_2"/>
+                                    <boolean value="true"/>
+                                    <boolean value="true"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </call>
+                                </call>
+                                <call functionName="SetVariable">
+                                    <variableID id="BodyVariableClass_3"/>
+                                    <boolean value="true"/>
+                                </call>
+                                <call functionName="Noop"/>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <actionActivity name="Move Randomly"
+                    id="ActionActivityGraphLeaf_1" x="5" y="87"
+                    width="353" height="70" type="state like">
+                    <backgroundColor red="255" green="255" blue="255"/>
+                    <actionRule>
+                        <action>
+                            <call functionName="If Then Else">
+                                <call functionName="RandomBoolean">
+                                    <double value="0.5"/>
+                                </call>
+                                <call functionName="ChangeDirectionBy">
+                                    <call functionName="GetMySpatialInfo"/>
+                                    <call functionName="RandomDouble">
+                                    <double value="-20.0"/>
+                                    <double value="20.0"/>
+                                    </call>
+                                </call>
+                                <call functionName="Noop"/>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="Move">
+                                <call functionName="GetMySpatialInfo"/>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="If Then Else">
+                                <call functionName="Not">
+                                    <call functionName="IsEmpty">
+                                    <call functionName="Select">
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="InstanceOf">
+                                    <parameterID id="FunctionArgument_0"/>
+                                    <objectClassID id="RessourceClass_0"/>
+                                    </call>
+                                    </functionCall>
+                                    <parameter
+                                    name="Untitled" id="FunctionArgument_0">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    <call functionName="ObserveObjectsOnPosition">
+                                    <call functionName="GetMyPosition"/>
+                                    <double value="20.0"/>
+                                    <boolean value="false"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                </call>
+                                <call functionName="Block">
+                                    <call functionName="SetVariable">
+                                    <variableID id="BodyVariableClass_4"/>
+                                    <call functionName="GetFirst">
+                                    <call functionName="Select">
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="InstanceOf">
+                                    <parameterID id="FunctionArgument_1"/>
+
+                                    <objectClassID id="RessourceClass_0"/>
+                                    </call>
+                                    </functionCall>
+                                    <parameter
+                                    name="Untitled" id="FunctionArgument_1">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    <call functionName="ObserveObjectsOnPosition">
+                                    <call functionName="GetMyPosition"/>
+                                    <double value="20.0"/>
+                                    <boolean value="false"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    <call functionName="SetVariable">
+                                    <variableID id="BodyVariableClass_1"/>
+                                    <call functionName="GetPosition">
+                                    <call functionName="GetSpatialInfo">
+                                    <call functionName="GetVariable">
+                                    <variableID
+                                    writeable="false" id="BodyVariableClass_4"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </call>
+                                </call>
+                                <call functionName="Noop"/>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <actionActivity name="Charge"
+                    id="ActionActivityGraphLeaf_2" x="591" y="642"
+                    width="161" height="70" type="state like">
+                    <backgroundColor red="153" green="204" blue="255"/>
+                    <actionRule>
+                        <action>
+                            <call functionName="SetVariable">
+                                <variableID id="BodyVariableClass_0"/>
+                                <call functionName="+">
+                                    <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_0"/>
+                                    </call>
+                                    <double value="10.0"/>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="If Then Else">
+                                <call functionName=">=">
+                                    <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_0"/>
+                                    </call>
+                                    <double value="100.0"/>
+                                </call>
+                                <call functionName="SetVariable">
+                                    <variableID id="BodyVariableClass_3"/>
+                                    <boolean value="false"/>
+                                </call>
+                                <call functionName="Noop"/>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <actionActivity name="Clean Up"
+                    id="ActionActivityGraphLeaf_3" x="62" y="431"
+                    width="246" height="72" type="state like">
+                    <backgroundColor red="255" green="255" blue="255"/>
+                    <actionRule>
+                        <action>
+                            <call functionName="If Then Else">
+                                <call functionName="Equal">
+                                    <call functionName="GetFirst">
+                                    <call functionName="Select">
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="InstanceOf">
+                                    <parameterID id="FunctionArgument_2"/>
+                                    <objectClassID id="RessourceClass_0"/>
+                                    </call>
+                                    </functionCall>
+                                    <parameter
+                                    name="Untitled" id="FunctionArgument_2">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    <call functionName="ObserveObjectsOnPosition">
+                                    <call functionName="GetMyPosition"/>
+                                    <double value="1.0"/>
+                                    <boolean value="false"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_4"/>
+                                    </call>
+                                </call>
+                                <call functionName="Block">
+                                    <call functionName="Kill">
+                                    <call functionName="GetVariable">
+                                    <variableID
+                                    writeable="false" id="BodyVariableClass_4"/>
+                                    </call>
+                                    </call>
+                                    <call functionName="SetVariable">
+                                    <variableID id="BodyVariableClass_2"/>
+                                    <boolean value="true"/>
+                                    </call>
+                                </call>
+                                <call functionName="Noop"/>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="SetVariable">
+                                <variableID id="BodyVariableClass_1"/>
+                                <position2D x="0.0" y="0.0"/>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="SetVariable">
+                                <variableID id="BodyVariableClass_4"/>
+                                <simObject/>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <actionActivity name="Move To Dustbin / Unload Waste"
+                    id="ActionActivityGraphLeaf_4" x="48" y="641"
+                    width="280" height="70" type="state like">
+                    <backgroundColor red="255" green="255" blue="255"/>
+                    <actionRule>
+                        <action>
+                            <call functionName="If Then Else">
+                                <call functionName="Equal">
+                                    <call functionName="GetMyPosition"/>
+                                    <call functionName="GetPosition">
+                                    <call functionName="GetSpatialInfo">
+                                    <call functionName="GetFirst">
+                                    <call functionName="GetAllObjectsOfType">
+                                    <objectClassID id="RessourceClass_1"/>
+                                    <boolean value="true"/>
+                                    <boolean value="true"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </call>
+                                </call>
+                                <call functionName="SetVariable">
+                                    <variableID id="BodyVariableClass_2"/>
+                                    <boolean value="false"/>
+                                </call>
+                                <call functionName="MoveTowardsPos">
+                                    <call functionName="GetMySpatialInfo"/>
+                                    <call functionName="GetPosition">
+                                    <call functionName="GetSpatialInfo">
+                                    <call functionName="GetFirst">
+                                    <call functionName="GetAllObjectsOfType">
+                                    <objectClassID id="RessourceClass_1"/>
+                                    <boolean value="true"/>
+                                    <boolean value="true"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    <call functionName="GetSpeed">
+                                    <call functionName="GetMySpatialInfo"/>
+                                    </call>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <actionActivity name="Move To Dust"
+                    id="ActionActivityGraphLeaf_5" x="96" y="227"
+                    width="164" height="70">
+                    <backgroundColor red="255" green="255" blue="255"/>
+                    <actionRule>
+                        <action>
+                            <call functionName="MoveTowardsPos">
+                                <call functionName="GetMySpatialInfo"/>
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_1"/>
+                                </call>
+                                <call functionName="GetSpeed">
+                                    <call functionName="GetMySpatialInfo"/>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <chainRule toActivityID="ActionActivityGraphLeaf_1" fromActivityID="EntryActivityGraphLeaf_0">
+                    <precondition>
+                        <boolean value="true"/>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_2" fromActivityID="ActionActivityGraphLeaf_0">
+                    <precondition>
+                        <call functionName="GetVariable">
+                            <variableID writeable="false" id="BodyVariableClass_3"/>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_4" fromActivityID="ActionActivityGraphLeaf_3">
+                    <precondition>
+                        <call functionName="And">
+                            <call functionName="GetVariable">
+                                <variableID writeable="false" id="BodyVariableClass_2"/>
+                            </call>
+                            <call functionName=">">
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_0"/>
+                                </call>
+                                <double value="20.0"/>
+                            </call>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_4" fromActivityID="ActionActivityGraphLeaf_2">
+                    <precondition>
+                        <call functionName="And">
+                            <call functionName="GetVariable">
+                                <variableID writeable="false" id="BodyVariableClass_2"/>
+                            </call>
+                            <call functionName="Not">
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_3"/>
+                                </call>
+                            </call>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_3" fromActivityID="ActionActivityGraphLeaf_2">
+                    <precondition>
+                        <call functionName="And">
+                            <call functionName="GetVariable">
+                                <variableID writeable="false" id="BodyVariableClass_2"/>
+                            </call>
+                            <call functionName="Not">
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_3"/>
+                                </call>
+                            </call>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_1" fromActivityID="ActionActivityGraphLeaf_4">
+                    <controlPoint x="-2" y="463"/>
+                    <controlPoint x="-2" y="196"/>
+                    <precondition>
+                        <call functionName="And">
+                            <call functionName="Not">
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_2"/>
+                                </call>
+                            </call>
+                            <call functionName=">">
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_0"/>
+                                </call>
+                                <double value="20.0"/>
+                            </call>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_1" fromActivityID="ActionActivityGraphLeaf_2">
+                    <precondition>
+                        <call functionName="And">
+                            <call functionName="Not">
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_2"/>
+                                </call>
+                            </call>
+                            <call functionName="Equal">
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_1"/>
+                                </call>
+                                <position2D x="0.0" y="0.0"/>
+                            </call>
+                            <call functionName="Not">
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_3"/>
+                                </call>
+                            </call>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_5" fromActivityID="ActionActivityGraphLeaf_1">
+                    <precondition>
+                        <call functionName="And">
+                            <call functionName="Not">
+                                <call functionName="Equal">
+                                    <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_1"/>
+                                    </call>
+                                    <position2D x="0.0" y="0.0"/>
+                                </call>
+                            </call>
+                            <call functionName=">">
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_0"/>
+                                </call>
+                                <double value="20.0"/>
+                            </call>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_3" fromActivityID="ActionActivityGraphLeaf_5">
+                    <precondition>
+                        <call functionName="And">
+                            <call functionName="Equal">
+                                <call functionName="GetMyPosition"/>
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_1"/>
+                                </call>
+                            </call>
+                            <call functionName=">">
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_0"/>
+                                </call>
+                                <double value="20.0"/>
+                            </call>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_5" fromActivityID="ActionActivityGraphLeaf_2">
+                    <precondition>
+                        <call functionName="And">
+                            <call functionName="Not">
+                                <call functionName="Equal">
+                                    <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_1"/>
+                                    </call>
+                                    <position2D x="0.0" y="0.0"/>
+                                </call>
+                            </call>
+                            <call functionName="Not">
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_3"/>
+                                </call>
+                            </call>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_0" fromActivityID="ActionActivityGraphLeaf_1">
+                    <precondition>
+                        <call functionName="&lt;=">
+                            <call functionName="GetVariable">
+                                <variableID writeable="false" id="BodyVariableClass_0"/>
+                            </call>
+                            <double value="20.0"/>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_0" fromActivityID="ActionActivityGraphLeaf_5">
+                    <controlPoint x="511" y="264"/>
+                    <precondition>
+                        <call functionName="&lt;=">
+                            <call functionName="GetVariable">
+                                <variableID writeable="false" id="BodyVariableClass_0"/>
+                            </call>
+                            <double value="20.0"/>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_0" fromActivityID="ActionActivityGraphLeaf_3">
+                    <controlPoint x="496" y="464"/>
+                    <precondition>
+                        <call functionName="&lt;=">
+                            <call functionName="GetVariable">
+                                <variableID writeable="false" id="BodyVariableClass_0"/>
+                            </call>
+                            <double value="20.0"/>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_0" fromActivityID="ActionActivityGraphLeaf_4">
+                    <controlPoint x="517" y="645"/>
+                    <precondition>
+                        <call functionName="&lt;=">
+                            <call functionName="GetVariable">
+                                <variableID writeable="false" id="BodyVariableClass_0"/>
+                            </call>
+                            <double value="20.0"/>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <otherwiseChainRule
+                    toActivityID="ActionActivityGraphLeaf_1" fromDecisionActivityID="ActionActivityGraphLeaf_3">
+                    <controlPoint x="55" y="380"/>
+                    <controlPoint x="55" y="209"/>
+                </otherwiseChainRule>
+            </composedActivity>
+        </reasoning>
+        <reasoning id="ActivityReasoningEngine_1">
+            <composedActivity name="Decrement Energy" id="ActivityGraph_1">
+                <entryActivity name="Entry Activity"
+                    id="EntryActivityGraphLeaf_1" x="153" y="162"
+                    width="15" height="15"/>
+                <exitActivity name="Exit Activity"
+                    id="ExitActivityGraphLeaf_1" x="289" y="105"
+                    width="15" height="15"/>
+                <emergencyActivity name="Emergency Activity"
+                    id="EmergencyActivityGraphLeaf_1" x="96" y="220"
+                    width="130" height="50"/>
+                <actionActivity name="Decrement Energy"
+                    id="ActionActivityGraphLeaf_6" x="341" y="129"
+                    width="155" height="70" type="state like">
+                    <actionRule>
+                        <action>
+                            <call functionName="IncrementVar">
+                                <variableID id="BodyVariableClass_0"/>
+                                <double value="-1.0"/>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <chainRule toActivityID="ActionActivityGraphLeaf_6" fromActivityID="EntryActivityGraphLeaf_1">
+                    <precondition>
+                        <boolean value="true"/>
+                    </precondition>
+                </chainRule>
+            </composedActivity>
+        </reasoning>
+    </agentClass>
+    <worldClass name="Untitled World Class" id="ActivityWorldClass_0" updateBeforeAllObjects="false">
+        <features>
+            <buildin xmlns="">Standard Functions</buildin>
+            <buildin xmlns="">Standard Object Functions</buildin>
+            <features id="SpatialMapFeatureClass_0"
+                xsi:type="XMLSpatialMapFeature" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+        </features>
+        <reasoning id="ActivityReasoningEngine_2">
+            <composedActivity name="Reasoning" id="ActivityGraph_2">
+                <entryActivity name="Entry Activity"
+                    id="EntryActivityGraphLeaf_2" x="153" y="54"
+                    width="15" height="15"/>
+                <exitActivity name="Exit Activity"
+                    id="ExitActivityGraphLeaf_2" x="237" y="207"
+                    width="15" height="15"/>
+                <emergencyActivity name="Emergency Activity"
+                    id="EmergencyActivityGraphLeaf_2" x="10" y="199"
+                    width="130" height="50"/>
+                <actionActivity name="Idle"
+                    id="ActionActivityGraphLeaf_7" x="299" y="119"
+                    width="290" height="70" type="state like">
+                    <actionRule>
+                        <action>
+                            <call functionName="If Then Else">
+                                <call functionName="RandomBoolean">
+                                    <double value="0.05"/>
+                                </call>
+                                <call functionName="CreateObjectAndRemember">
+                                    <objectInstance
+                                    id="RessourceInstance_0" objectClassID="RessourceClass_0">
+                                    <featureInstance
+                                    featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                                    xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <spatialInfo speed="10.0"
+                                    direction="0.0"
+                                    radius="5.0"
+                                    imagePath="bilder/staub.png"
+                                    drawPriority="3.0"
+                                    x="0.0" y="0.0"/>
+                                    </featureInstance>
+                                    </objectInstance>
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="BeamTo">
+                                    <call functionName="GetSpatialInfo">
+                                    <parameterID id="FunctionArgument_3"/>
+                                    </call>
+                                    <call functionName="CreatePos">
+                                    <call functionName="RandomDouble">
+                                    <double value="0.0"/>
+                                    <call functionName="PosGetX">
+                                    <call functionName="GetMapDimension"/>
+                                    </call>
+                                    </call>
+                                    <call functionName="RandomDouble">
+                                    <double value="0.0"/>
+                                    <call functionName="PosGetY">
+                                    <call functionName="GetMapDimension"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="Untitled" id="FunctionArgument_3">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                </call>
+                                <call functionName="Noop"/>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <chainRule toActivityID="ActionActivityGraphLeaf_7" fromActivityID="EntryActivityGraphLeaf_2">
+                    <precondition>
+                        <boolean value="true"/>
+                    </precondition>
+                </chainRule>
+            </composedActivity>
+        </reasoning>
+    </worldClass>
+    <situation name="CleaningWorld" id="Situation_0">
+        <worldInstance id="ActivityWorldInstance_0" objectClassID="ActivityWorldClass_0">
+            <featureInstance
+                featureObjectClassID="SpatialMapFeatureClass_0"
+                torus="true" drawGrid="true" discrete="true"
+                rotateImages="false" centeredPos="true" tiled="false"
+                horizontalTiles="1" verticalTiles="1"
+                xsi:type="XMLSpatialMapFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <mapSize width="100.0" height="100.0"/>
+                <gridCols value="10"/>
+                <gridRows value="10"/>
+            </featureInstance>
+        </worldInstance>
+        <objectInstance id="RessourceInstance_1" objectClassID="RessourceClass_0">
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0" radius="5.0"
+                    imagePath="bilder/staub.png"
+                    drawPriority="3.0" x="15.0" y="35.0"/>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="RessourceInstance_2" objectClassID="RessourceClass_1">
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0" radius="5.0"
+                    imagePath="bilder/papierkorb.png"
+                    drawPriority="3.0" x="85.0" y="15.0"/>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="RessourceInstance_3" objectClassID="RessourceClass_2">
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_2"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0" radius="5.0"
+                    imagePath="bilder/ladestation.png"
+                    drawPriority="3.0" x="85.0" y="85.0"/>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ActivityAgentInstance_0" objectClassID="ActivityAgentClass_0">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_1"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_2"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_3"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_4"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_3"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0" radius="5.0"
+                    imagePath="bilder/staubsauger.png"
+                    drawPriority="3.0" x="35.0" y="65.0"/>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="RessourceInstance_4" objectClassID="RessourceClass_0">
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0" radius="5.0"
+                    imagePath="bilder/staub.png"
+                    drawPriority="3.0" x="55.0" y="55.0"/>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="RessourceInstance_5" objectClassID="RessourceClass_0">
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0" radius="5.0"
+                    imagePath="bilder/staub.png"
+                    drawPriority="3.0" x="5.0" y="55.0"/>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="RessourceInstance_6" objectClassID="RessourceClass_0">
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0" radius="5.0"
+                    imagePath="bilder/staub.png"
+                    drawPriority="3.0" x="35.0" y="55.0"/>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="RessourceInstance_7" objectClassID="RessourceClass_0">
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0" radius="5.0"
+                    imagePath="bilder/staub.png"
+                    drawPriority="3.0" x="95.0" y="35.0"/>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="RessourceInstance_8" objectClassID="RessourceClass_0">
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0" radius="5.0"
+                    imagePath="bilder/staub.png"
+                    drawPriority="3.0" x="65.0" y="15.0"/>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="RessourceInstance_9" objectClassID="RessourceClass_0">
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0" radius="5.0"
+                    imagePath="bilder/staub.png"
+                    drawPriority="3.0" x="35.0" y="95.0"/>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="RessourceInstance_10" objectClassID="RessourceClass_0">
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0" radius="5.0"
+                    imagePath="bilder/staub.png"
+                    drawPriority="3.0" x="5.0" y="75.0"/>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="RessourceInstance_11" objectClassID="RessourceClass_0">
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0" radius="5.0"
+                    imagePath="bilder/staub.png"
+                    drawPriority="3.0" x="65.0" y="95.0"/>
+            </featureInstance>
+        </objectInstance>
+    </situation>
+</XMLSeSAmModel>

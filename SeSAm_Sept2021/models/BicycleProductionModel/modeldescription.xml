@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<Model> 
+    <Title>Factory Simulation (Bicycle Procuction)</Title> 
+    <ModelFile>BicycleProductionModel.xml</ModelFile> 
+    <Image> 
+        <Path>teaser.png</Path> 
+        <ImageTitle>Factory in action</ImageTitle> 
+    </Image> 
+    
+    <Description>The �Bicycle Production� model shows a simplified production process. In the represented factory two different versions of a bicycle are produced: one bicycle for men with a blue frame and one bicycle for women with a red frame.</Description> 
+</Model> 

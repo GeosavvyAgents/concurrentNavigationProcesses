@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<Model> 
+    <Title>Ant trails</Title> 
+    <ModelFile>ant_modell.xml</ModelFile> 
+    <Image> 
+        <Path>ants.png</Path> 
+        <ImageTitle>Ants at work</ImageTitle> 
+    </Image> 
+    
+    <Description>In this model ants are searching and collecting food. 
+    They are directed by phereomones dopped by other ants, and they can therefore
+    efficiently scan the whole area.</Description> 
+</Model> 
