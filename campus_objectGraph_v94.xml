@@ -2098,7 +2098,7 @@
             <features id="SpatialInfoObjectFeatureClass_10"
                 xsi:type="XMLSpatialInfoFeature" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                 <spatialInfo speed="10.0" direction="0.0"
-                    imagePath="campusOSM.png" drawPriority="3.0"
+                    imagePath="graphics/campusOSM.png" drawPriority="3.0"
                     imageStyle="0" shapeStyle="2" x="0.0" y="0.0">
                     <figure direction="0.0" width="3192.0"
                         height="3392.0" xsi:type="XMLRectangle">
@@ -2119,7 +2119,7 @@
             <features id="SpatialInfoObjectFeatureClass_11"
                 xsi:type="XMLSpatialInfoFeature" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                 <spatialInfo speed="10.0" direction="0.0"
-                    imagePath="PEM.gif" drawPriority="5.0"
+                    imagePath="graphics/PEM.gif" drawPriority="5.0"
                     imageStyle="0" shapeStyle="2" x="0.0" y="0.0">
                     <figure direction="0.0" width="16.0" height="12.0" xsi:type="XMLEllipse">
                         <balancePoint x="8.0" y="6.0"/>
@@ -4477,7 +4477,7 @@
                 <mapSize width="3192.0" height="3392.0"/>
                 <gridCols value="1596"/>
                 <gridRows value="1696"/>
-                <backgroundImage value="campusOSM.png"/>
+                <backgroundImage value="graphics/campusOSM.png"/>
             </featureInstance>
         </worldInstance>
         <objectInstance id="ResourceInstance_2" objectClassID="ResourceClass_0">
@@ -7495,7 +7495,7 @@
                 featureObjectClassID="SpatialInfoObjectFeatureClass_11"
                 xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                 <spatialInfo speed="10.0" direction="0.0"
-                    imagePath="PEM.gif" drawPriority="5.0"
+                    imagePath="graphics/PEM.gif" drawPriority="5.0"
                     imageStyle="0" shapeStyle="2" x="0.0" y="0.0">
                     <figure direction="0.0" width="16.0" height="12.0" xsi:type="XMLEllipse">
                         <balancePoint x="8.0" y="6.0"/>
@@ -7543,7 +7543,7 @@
                 featureObjectClassID="SpatialInfoObjectFeatureClass_11"
                 xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                 <spatialInfo speed="10.0" direction="0.0"
-                    imagePath="PEM.gif" drawPriority="5.0"
+                    imagePath="graphics/PEM.gif" drawPriority="5.0"
                     imageStyle="0" shapeStyle="2" x="0.0" y="0.0">
                     <figure direction="0.0" width="16.0" height="12.0" xsi:type="XMLEllipse">
                         <balancePoint x="8.0" y="6.0"/>
@@ -7591,7 +7591,7 @@
                 featureObjectClassID="SpatialInfoObjectFeatureClass_11"
                 xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                 <spatialInfo speed="10.0" direction="0.0"
-                    imagePath="PEM.gif" drawPriority="5.0"
+                    imagePath="graphics/PEM.gif" drawPriority="5.0"
                     imageStyle="0" shapeStyle="2" x="0.0" y="0.0">
                     <figure direction="0.0" width="16.0" height="12.0" xsi:type="XMLEllipse">
                         <balancePoint x="8.0" y="6.0"/>
@@ -7606,7 +7606,7 @@
                 featureObjectClassID="SpatialInfoObjectFeatureClass_10"
                 xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                 <spatialInfo speed="10.0" direction="0.0"
-                    imagePath="campusOSM.png" drawPriority="4.0"
+                    imagePath="graphics/campusOSM.png" drawPriority="4.0"
                     imageStyle="0" shapeStyle="2" x="0.0" y="0.0">
                     <figure direction="0.0" width="3192.0"
                         height="3392.0" xsi:type="XMLRectangle">
