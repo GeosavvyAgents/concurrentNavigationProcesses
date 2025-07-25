@@ -1,0 +1,8 @@
+SeSAm was developed under the Lesser GNU license. 
+That means the SeSAm code is open source, yet it does not imply 
+that products using SeSAm are automatically placed under the 
+open source license as well. 
+
+The usage of SeSAm has to be explicitly mentioned in the product 
+documentation. More information on the license can be found on 
+www.simsesam.org.
