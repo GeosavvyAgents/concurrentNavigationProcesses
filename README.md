@@ -1,4 +1,4 @@
-# concurrent Navigation Processes
+# Concurrent Navigation Processes
 
 This repository contains the code needed to run an agent-based model of concurrent human navigation processes described in the paper "Realistic Agent Behaviour based on Concurrent Process Architectures – Modelling Human Navigation" published and presented by Sabine Timpf and Franziska Klugl at the EUMAS 2025 conference https://euramas.github.io/eumas2025/.
 
