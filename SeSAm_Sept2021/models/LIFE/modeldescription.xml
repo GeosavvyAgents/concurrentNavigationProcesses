@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Model>
+	<Title>Game of Life</Title>
+	<ModelFile>LIFE automaton.xml</ModelFile>
+	<Image>
+		<Path>title.jpg</Path>
+		<ImageTitle>Example 50x50</ImageTitle>
+	</Image>
+	<Description>An implementation of the famous Game of LIFE. If you want to animate the simulation, you have to adapt the user function "my looks" that provides the right picture according to the cells state. SeSAm stores absolute paths to the pictures - just choose the jpgs/gifs you want.
+</Description>
+</Model>

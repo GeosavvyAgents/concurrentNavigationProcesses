@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMLSeSAmModel lastRunExperiment="Simulation_0" version="0.2"
+    globalAssert="true" compileDebugFunction="true"
+    runDebugFunction="true" optimize="true" inline="true"
+    closures="false" xmlns="http://www.simsesam.de/schemas/model">
+    <userType name="LIFE state" id="UserType_0" type="enum">
+        <item name="alife"/>
+        <item name="dead"/>
+    </userType>
+    <userFunction name="my looks" id="UserFunction_0" external="true"
+        expert="false" inline="true">
+        <functionCall>
+            <call functionName="If Then Else">
+                <call functionName="Equal">
+                    <call functionName="GetVariableFrom">
+                        <variableID writeable="false" id="BodyVariableClass_0"/>
+                        <parameterID id="FunctionArgument_0"/>
+                    </call>
+                    <enum enumTypeID="UserType_0" index="0"/>
+                </call>
+                <image value="alife.jpg"/>
+                <image value="dead.jpg"/>
+            </call>
+        </functionCall>
+        <parameter name="cell" id="FunctionArgument_0">
+            <simObjectType/>
+        </parameter>
+        <imageType/>
+    </userFunction>
+    <userFunction name="is alife? (parallel state)" id="UserFunction_1"
+        external="true" expert="false" inline="true">
+        <functionCall>
+            <call functionName="Equal">
+                <call functionName="GetVariableFrom">
+                    <variableID writeable="false" id="BodyVariableClass_1"/>
+                    <parameterID id="FunctionArgument_1"/>
+                </call>
+                <enum enumTypeID="UserType_0" index="0"/>
+            </call>
+        </functionCall>
+        <parameter name="cell" id="FunctionArgument_1">
+            <simObjectType/>
+        </parameter>
+        <booleanType/>
+    </userFunction>
+    <agentClass name="LIFE cell" id="ActivityAgentClass_0">
+        <features>
+            <buildin>Standard Functions</buildin>
+            <buildin>Standard Object Functions</buildin>
+            <features id="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeature" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="1"
+                    x="0.0" y="0.0">
+                    <figure direction="0.0" sideLength="10.0" xsi:type="XMLSquare">
+                        <balancePoint x="5.0" y="5.0"/>
+                        <position x="0.0" y="0.0"/>
+                    </figure>
+                    <shapeColor red="255" green="255" blue="255"/>
+                </spatialInfo>
+            </features>
+        </features>
+        <bodyClass>
+            <bodyVariableClass id="BodyVariableClass_0">
+                <variableClass name="state" id="VariableClass_0"
+                    writeable="true" external="true" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <userType id="UserType_0"/>
+                    <defaultValue>
+                        <enum enumTypeID="UserType_0" index="0"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_1">
+                <variableClass name="parallel state"
+                    id="VariableClass_1" writeable="true"
+                    external="true" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <userType id="UserType_0"/>
+                    <defaultValue>
+                        <enum enumTypeID="UserType_0" index="0"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_2">
+                <variableClass name="my neighbours" id="VariableClass_2"
+                    writeable="true" external="false" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <listType>
+                        <simObjectType/>
+                    </listType>
+                    <defaultValue>
+                        <call functionName="CreateList">
+                            <listType>
+                                <simObjectType/>
+                            </listType>
+                        </call>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+        </bodyClass>
+        <interactionelements/>
+        <reasoning>
+            <composedActivity name="Behaviour" id="ActivityGraph_0">
+                <entryActivity name="Entry Activity"
+                    id="EntryActivityGraphLeaf_0" x="274" y="40"
+                    width="15" height="15"/>
+                <exitActivity name="Exit Activity"
+                    id="ExitActivityGraphLeaf_0" x="527" y="115"
+                    width="15" height="15"/>
+                <emergencyActivity name="Emergency Activity"
+                    id="EmergencyActivityGraphLeaf_0" x="530" y="282"
+                    width="130" height="50"/>
+                <actionActivity name="State Update"
+                    id="ActionActivityGraphLeaf_0" x="270" y="146"
+                    width="90" height="70" type="state like">
+                    <actionRule>
+                        <action>
+                            <call functionName="DoWith">
+                                <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="If Then Else">
+                                    <call functionName="&lt;">
+                                    <parameterID id="FunctionArgument_2"/>
+                                    <integer value="2"/>
+                                    </call>
+                                    <call functionName="SetVariable">
+                                    <variableID
+                                    external="false" id="BodyVariableClass_0"/>
+                                    <enum
+                                    enumTypeID="UserType_0" index="1"/>
+                                    </call>
+                                    <call functionName="If Then Else">
+                                    <call functionName="&gt;">
+                                    <parameterID id="FunctionArgument_2"/>
+                                    <integer value="3"/>
+                                    </call>
+                                    <call functionName="SetVariable">
+                                    <variableID
+                                    external="false" id="BodyVariableClass_0"/>
+                                    <enum
+                                    enumTypeID="UserType_0" index="1"/>
+                                    </call>
+                                    <call functionName="If Then Else">
+                                    <call functionName="Equal">
+                                    <parameterID id="FunctionArgument_2"/>
+                                    <integer value="3"/>
+                                    </call>
+                                    <call functionName="SetVariable">
+                                    <variableID
+                                    external="false" id="BodyVariableClass_0"/>
+                                    <enum
+                                    enumTypeID="UserType_0" index="0"/>
+                                    </call>
+                                    <call functionName="Noop"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </functionCall>
+                                    <parameter
+                                    name="number of alife neighbours" id="FunctionArgument_2">
+                                    <doubleType/>
+                                    </parameter>
+                                </parametricFunction>
+                                <call functionName="Count">
+                                    <call functionName="Select">
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="Equal">
+                                    <call functionName="GetVariableFrom">
+                                    <variableID
+                                    writeable="false" id="BodyVariableClass_1"/>
+                                    <parameterID id="FunctionArgument_3"/>
+                                    </call>
+                                    <enum
+                                    enumTypeID="UserType_0" index="0"/>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="cell" id="FunctionArgument_3">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    <call functionName="GetVariable">
+                                    <variableID
+                                    writeable="false" id="BodyVariableClass_2"/>
+                                    </call>
+                                    </call>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <actionActivity name="init cell"
+                    id="ActionActivityGraphLeaf_1" x="126" y="146"
+                    width="90" height="70">
+                    <actionRule>
+                        <action>
+                            <call functionName="SetVariable">
+                                <variableID external="false" id="BodyVariableClass_0"/>
+                                <call functionName="If Then Else">
+                                    <call functionName="RandomBoolean">
+                                    <call functionName="GetVariableFrom">
+                                    <variableID id="BodyVariableClass_5"/>
+                                    <call functionName="GetWorld"/>
+                                    </call>
+                                    </call>
+                                    <enum enumTypeID="UserType_0" index="0"/>
+                                    <enum enumTypeID="UserType_0" index="1"/>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="SetVariable">
+                                <variableID external="false" id="BodyVariableClass_1"/>
+                                <call functionName="GetVariable">
+                                    <variableID external="false"
+                                    writeable="false" id="BodyVariableClass_0"/>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="SetVariable">
+                                <variableID id="BodyVariableClass_2"/>
+                                <call functionName="AsList">
+                                    <call functionName="ObserveObjectsOnPosition">
+                                    <call functionName="GetMyPosition"/>
+                                    <integer value="190"/>
+                                    <boolean value="false"/>
+                                    <boolean value="false"/>
+                                    </call>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="ChangeImage">
+                                <call functionName="GetMySpatialInfo"/>
+                                <call userFunctionID="UserFunction_0">
+                                    <call functionName="GetCurrentSimObject"/>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <actionActivity name="update image"
+                    id="ActionActivityGraphLeaf_2" x="274" y="273"
+                    width="90" height="70" instantly="true">
+                    <actionRule>
+                        <action>
+                            <call functionName="If Then Else">
+                                <call functionName="Equal">
+                                    <call functionName="GetVariable">
+                                    <variableID external="false"
+                                    writeable="false" id="BodyVariableClass_0"/>
+                                    </call>
+                                    <enum enumTypeID="UserType_0" index="0"/>
+                                </call>
+                                <call functionName="ChangeShapeColor">
+                                    <call functionName="GetMySpatialInfo"/>
+                                    <color red="255" green="0" blue="0"/>
+                                </call>
+                                <call functionName="ChangeShapeColor">
+                                    <call functionName="GetMySpatialInfo"/>
+                                    <color red="255" green="255" blue="255"/>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <chainRule toActivityID="ActionActivityGraphLeaf_1" fromActivityID="EntryActivityGraphLeaf_0">
+                    <precondition>
+                        <boolean value="true"/>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_2" fromActivityID="ActionActivityGraphLeaf_0">
+                    <controlPoint x="285" y="247"/>
+                    <precondition>
+                        <boolean value="true"/>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_0" fromActivityID="ActionActivityGraphLeaf_1">
+                    <precondition>
+                        <boolean value="true"/>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_0" fromActivityID="ActionActivityGraphLeaf_2">
+                    <controlPoint x="340" y="245"/>
+                    <precondition>
+                        <boolean value="true"/>
+                    </precondition>
+                </chainRule>
+            </composedActivity>
+        </reasoning>
+    </agentClass>
+    <worldClass name="LIFE automaton" id="ActivityWorldClass_0" updateBeforeAllObjects="false">
+        <features>
+            <buildin>Standard Functions</buildin>
+            <buildin>Standard Object Functions</buildin>
+            <features id="SpatialMapFeatureClass_0"
+                xsi:type="XMLSpatialMapFeature" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+        </features>
+        <bodyClass>
+            <bodyVariableClass id="BodyVariableClass_3">
+                <variableClass name="X extension" id="VariableClass_3"
+                    writeable="false" external="false"
+                    partOfName="false" configValue="true" analysisValue="true">
+                    <doubleType/>
+                    <defaultValue>
+                        <integer value="100"/>
+                        <doubleType/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_4">
+                <variableClass name="Y extension" id="VariableClass_4"
+                    writeable="false" external="false"
+                    partOfName="false" configValue="true" analysisValue="true">
+                    <doubleType/>
+                    <defaultValue>
+                        <integer value="100"/>
+                        <doubleType/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_5">
+                <variableClass name="init alife probability"
+                    id="VariableClass_5" writeable="false"
+                    external="true" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <doubleType/>
+                    <defaultValue>
+                        <double value="0.05"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+        </bodyClass>
+        <interactionelements/>
+        <reasoning>
+            <composedActivity name="Behaviour" id="ActivityGraph_1">
+                <entryActivity name="Entry Activity"
+                    id="EntryActivityGraphLeaf_1" x="137" y="138"
+                    width="15" height="15"/>
+                <exitActivity name="Exit Activity"
+                    id="ExitActivityGraphLeaf_1" x="74" y="285"
+                    width="15" height="15"/>
+                <emergencyActivity name="Emergency Activity"
+                    id="EmergencyActivityGraphLeaf_1" x="223" y="-1"
+                    width="130" height="50"/>
+                <actionActivity name="Generate Cells"
+                    id="ActionActivityGraphLeaf_3" x="171" y="194"
+                    width="90" height="70">
+                    <actionRule>
+                        <action>
+                            <call functionName="ForTimes">
+                                <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="ForTimes">
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="CreateObjectAndRemember">
+                                    <objectInstance
+                                    id="ActivityAgentInstance_0" objectClassID="ActivityAgentClass_0">
+
+                                    <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+
+                                    <bodyVariableInstance bodyVariableClassID="BodyVariableClass_1"/>
+
+                                    <bodyVariableInstance bodyVariableClassID="BodyVariableClass_2"/>
+
+                                    <featureInstance
+                                    featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                                    xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+                                    <spatialInfo
+                                    speed="100.0"
+                                    direction="0.0"
+                                    drawPriority="3.0"
+                                    imageStyle="2"
+                                    shapeStyle="1"
+                                    x="50.0" y="50.0">
+
+                                    <figure
+                                    direction="0.0"
+                                    sideLength="100.0" xsi:type="XMLSquare">
+
+                                    <balancePoint
+                                    x="50.0" y="50.0"/>
+
+                                    <position
+                                    x="50.0" y="50.0"/>
+                                    </figure>
+
+                                    <shapeColor
+                                    red="0"
+                                    green="0" blue="0"/>
+                                    </spatialInfo>
+                                    </featureInstance>
+                                    </objectInstance>
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="BeamTo">
+
+                                    <call functionName="GetSpatialInfo">
+
+                                    <parameterID id="FunctionArgument_7"/>
+                                    </call>
+
+                                    <call functionName="CreatePos">
+
+                                    <call functionName="*">
+
+                                    <parameterID id="FunctionArgument_4"/>
+
+                                    <integer value="100"/>
+                                    </call>
+
+                                    <call functionName="*">
+
+                                    <parameterID id="FunctionArgument_6"/>
+
+                                    <integer value="100"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </functionCall>
+                                    <parameter
+                                    name="new cell" id="FunctionArgument_7">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="y" id="FunctionArgument_6">
+                                    <doubleType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    <integer value="0"/>
+                                    <call functionName="GetVariable">
+                                    <variableID id="BodyVariableClass_4"/>
+                                    </call>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="x" id="FunctionArgument_4">
+                                    <doubleType/>
+                                    </parameter>
+                                </parametricFunction>
+                                <integer value="0"/>
+                                <call functionName="GetVariable">
+                                    <variableID id="BodyVariableClass_3"/>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <actionActivity name="shift parallel state"
+                    id="ActionActivityGraphLeaf_4" x="347" y="196"
+                    width="90" height="70" type="state like">
+                    <actionRule>
+                        <action>
+                            <call functionName="ForElements">
+                                <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="SetVariableOf">
+                                    <variableID id="BodyVariableClass_1"/>
+                                    <call functionName="GetVariableFrom">
+                                    <variableID
+                                    writeable="false" id="BodyVariableClass_0"/>
+                                    <parameterID id="FunctionArgument_5"/>
+                                    </call>
+                                    <parameterID id="FunctionArgument_5"/>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="cell" id="FunctionArgument_5">
+                                    <simObjectType/>
+                                    </parameter>
+                                </parametricFunction>
+                                <call functionName="GetAllObjectsOfType">
+                                    <objectClassID id="ActivityAgentClass_0"/>
+                                    <boolean value="true"/>
+                                    <boolean value="true"/>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <chainRule toActivityID="ActionActivityGraphLeaf_3" fromActivityID="EntryActivityGraphLeaf_1">
+                    <precondition>
+                        <boolean value="true"/>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_4" fromActivityID="ActionActivityGraphLeaf_3">
+                    <precondition>
+                        <boolean value="true"/>
+                    </precondition>
+                </chainRule>
+            </composedActivity>
+        </reasoning>
+    </worldClass>
+    <situation name="50x50 Automaton" id="Situation_0">
+        <worldInstance id="ActivityWorldInstance_0" objectClassID="ActivityWorldClass_0">
+            <bodyVariableInstance usesOwnDefaulValue="true" bodyVariableClassID="BodyVariableClass_3">
+                <defaultValue>
+                    <integer value="50"/>
+                </defaultValue>
+            </bodyVariableInstance>
+            <bodyVariableInstance usesOwnDefaulValue="true" bodyVariableClassID="BodyVariableClass_4">
+                <defaultValue>
+                    <integer value="50"/>
+                </defaultValue>
+            </bodyVariableInstance>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_5"/>
+            <featureInstance
+                featureObjectClassID="SpatialMapFeatureClass_0"
+                torus="true" drawGrid="false" discrete="false"
+                rotateImages="true" centeredPos="true" tiled="false"
+                horizontalTiles="1" verticalTiles="1"
+                xsi:type="XMLSpatialMapFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <mapSize width="5000.0" height="5000.0"/>
+                <gridCols value="50"/>
+                <gridRows value="50"/>
+            </featureInstance>
+        </worldInstance>
+    </situation>
+    <situation name="200x100 Automaton" id="Situation_1">
+        <worldInstance id="ActivityWorldInstance_1" objectClassID="ActivityWorldClass_0">
+            <bodyVariableInstance usesOwnDefaulValue="true" bodyVariableClassID="BodyVariableClass_3">
+                <defaultValue>
+                    <double value="200.0"/>
+                </defaultValue>
+            </bodyVariableInstance>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_4"/>
+            <bodyVariableInstance usesOwnDefaulValue="true" bodyVariableClassID="BodyVariableClass_5">
+                <defaultValue>
+                    <double value="0.2"/>
+                </defaultValue>
+            </bodyVariableInstance>
+            <featureInstance
+                featureObjectClassID="SpatialMapFeatureClass_0"
+                torus="true" drawGrid="false" discrete="false"
+                rotateImages="true" centeredPos="true" tiled="false"
+                horizontalTiles="1" verticalTiles="1"
+                xsi:type="XMLSpatialMapFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <mapSize width="20000.0" height="10000.0"/>
+                <gridCols value="200"/>
+                <gridRows value="100"/>
+            </featureInstance>
+        </worldInstance>
+    </situation>
+    <situation name="500x500 Automaton" id="Situation_2">
+        <worldInstance id="ActivityWorldInstance_2" objectClassID="ActivityWorldClass_0">
+            <bodyVariableInstance usesOwnDefaulValue="true" bodyVariableClassID="BodyVariableClass_3">
+                <defaultValue>
+                    <integer value="500"/>
+                </defaultValue>
+            </bodyVariableInstance>
+            <bodyVariableInstance usesOwnDefaulValue="true" bodyVariableClassID="BodyVariableClass_4">
+                <defaultValue>
+                    <integer value="500"/>
+                </defaultValue>
+            </bodyVariableInstance>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_5"/>
+            <featureInstance
+                featureObjectClassID="SpatialMapFeatureClass_0"
+                torus="true" drawGrid="false" discrete="false"
+                rotateImages="true" centeredPos="true" tiled="false"
+                horizontalTiles="1" verticalTiles="1"
+                xsi:type="XMLSpatialMapFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <mapSize width="50000.0" height="50000.0"/>
+                <gridCols value="500"/>
+                <gridRows value="500"/>
+            </featureInstance>
+        </worldInstance>
+    </situation>
+    <simulation id="Simulation_0" startSituationID="Situation_1" test="false"/>
+</XMLSeSAmModel>

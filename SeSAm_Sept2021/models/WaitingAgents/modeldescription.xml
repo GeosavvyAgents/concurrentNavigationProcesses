@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<Model> 
+    <Title>Waiting Queues</Title> 
+    <ModelFile>WaitingAgentsModel.xml</ModelFile> 
+    <Image> 
+        <Path>teaser.png</Path> 
+        <ImageTitle>People waiting at counters</ImageTitle> 
+    </Image> 
+    
+    <Description>
+    This model shows people waiting in a queue to be served, for example at a post office or at the check-in counters in an airport. The blue circles represent the counter clerks behind their black desks. Waiting agents are represented as circles, too. They get a random colour out of a colour-list to clarify the movements of the queue.
+    </Description> 
+</Model> 

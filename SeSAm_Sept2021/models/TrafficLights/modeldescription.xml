@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<Model> 
+    <Title>Traffic - Crossig</Title> 
+    <ModelFile>TrafficLightsModel.xml</ModelFile> 
+    <Image> 
+        <Path>teaser.png</Path> 
+        <ImageTitle>Crossing with Trafficlights</ImageTitle> 
+    </Image> 
+    
+    <Description>A simple traffic model that shows car flow at a crossing 
+    directed by traffic lights. </Description> 
+</Model> 

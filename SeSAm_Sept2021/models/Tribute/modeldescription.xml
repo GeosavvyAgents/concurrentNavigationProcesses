@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Model>
+    <Title>Axelrod's Tribute Model</Title>
+    <ModelFile>tribute_complete_v16.xml</ModelFile>
+    <Image>
+        <Path>tribute.jpg</Path>
+        <ImageTitle>10 Agents (2 Pairs fighting, 1 paying)</ImageTitle>
+    </Image>
+    <Description>
+This model is a re-implementation of the famous Tribute model of R. Axelrod.
+("Emergence of New Political Actors"). Agents are positioned in ring. One 
+agent is activated. This agent may decide to demand tribute from one of its 
+neighbours according to some vulnerablity. The attacked agents decides 
+whether to fight or to pay due to the potential costs of war or tribute. 
+Costs, vulnerability, tribute are computed based on the wealth of an agent. 
+Paying tribute changes some commitment structure that again influences who 
+might demand tribute from whom.
+After three activations, wealth of all agents is increased.
+</Description>
+</Model>
