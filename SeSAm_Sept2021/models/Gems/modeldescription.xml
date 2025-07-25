@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Model>
+	<Title>Collect the gems</Title>
+	<ModelFile>gems.xml</ModelFile>
+	<Image>
+		<Path>gems.gif</Path>
+		<ImageTitle>The Game</ImageTitle>
+	</Image>
+	<Description> This model is not a real MultiAgent Simulation, but it shows very imposingly how the simple behaviour of several single items may result in a system respecing all game rules. Your aim is to collect gems from the board. You may pick them up if there are at least three equal gems in a row or a column. In addition you are allowed to exchange gems at adjacent board positions, if you can collect some gems afterward.
+	</Description>
+</Model>

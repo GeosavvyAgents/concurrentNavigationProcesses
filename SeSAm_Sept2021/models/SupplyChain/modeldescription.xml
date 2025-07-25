@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Model>
+    <Title>Supply Chain Model</Title> 
+    <ModelFile>SupplyChainModel.xml</ModelFile> 
+    <Image> 
+        <Path>supply.png</Path> 
+        <ImageTitle>Net of producers</ImageTitle> 
+    </Image> 
+    
+    <Description>
+	The supply chain in the little example model consists of five steps û all indicated by products (i.e.
+	circles) in another colour. The last step represents a consumer agent, who just has to order the
+	desired products from the previous agents and dose not have to produce anything by itself. Trading
+	relationships between two agents are represented by a black line like depicted in the picture.
+
+	An agent is building products for an order or for its own storeroom, unless there is no order and the
+	maximum capacity of its storeroom is reached. In this case there is no work to be done and the
+	agent pauses. Of course the production of a product needs some time.
+	If an agent wants to produce a product, but hasn't got enough raw materials, it has to order the
+	missing materials from an agent of the previous production step. Therefore it chooses the agent with
+	the highest amount of finished pieces or, if there is more than one agent with the same amount, it
+	chooses one of these agents randomly. Thereby products produced for another order are not taken
+	into account. If the supplier has produced the proper amount of ordered products, it delivers the
+	products to its client. For each product an agent has to produce it can choose another supplier. So
+	trade relations might change often. To refine this process of choosing a supplier one could also take
+	other aspects into account (which then can be analysed with the help of suitable analyses).
+	</Description> 
+</Model> 

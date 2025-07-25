@@ -1,0 +1,3354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMLSeSAmModel lastRunExperiment="InteractiveSimulation_0" version="0.2"
+    globalAssert="true" compileDebugFunction="true"
+    runDebugFunction="true" optimize="true" inline="true"
+    closures="false" xmlns="http://www.simsesam.de/schemas/model">
+    <userFunction name="Nächste Höhle" id="UserFunction_0"
+        external="true" expert="false" inline="true">
+        <functionCall>
+            <call functionName="Maximize">
+                <parametricFunction>
+                    <functionCall>
+                        <call functionName="If Then Else">
+                            <call functionName="&lt;">
+                                <call functionName="Distance">
+                                    <call functionName="GetSpatialInfo">
+                                    <parameterID id="FunctionArgument_3"/>
+                                    </call>
+                                    <call functionName="GetSpatialInfo">
+                                    <parameterID id="FunctionArgument_0"/>
+                                    </call>
+                                </call>
+                                <call functionName="Distance">
+                                    <call functionName="GetSpatialInfo">
+                                    <parameterID id="FunctionArgument_4"/>
+                                    </call>
+                                    <call functionName="GetSpatialInfo">
+                                    <parameterID id="FunctionArgument_0"/>
+                                    </call>
+                                </call>
+                            </call>
+                            <parameterID id="FunctionArgument_3"/>
+                            <parameterID id="FunctionArgument_4"/>
+                        </call>
+                    </functionCall>
+                    <parameter name="Höhle1" id="FunctionArgument_3">
+                        <simObjectType/>
+                    </parameter>
+                    <parameter name="Höhle2" id="FunctionArgument_4">
+                        <simObjectType/>
+                    </parameter>
+                </parametricFunction>
+                <call functionName="GetAllObjectsOfType">
+                    <objectClassID id="ResourceClass_0"/>
+                    <boolean value="true"/>
+                    <boolean value="true"/>
+                </call>
+            </call>
+        </functionCall>
+        <parameter name="ich" id="FunctionArgument_0">
+            <simObjectType/>
+        </parameter>
+        <simObjectType/>
+    </userFunction>
+    <userFunction name="Hilfe Räuber!" id="UserFunction_1"
+        external="true" expert="false" inline="true">
+        <functionCall>
+            <call functionName="MoveTowardsPos">
+                <call functionName="GetSpatialInfo">
+                    <parameterID id="FunctionArgument_2"/>
+                </call>
+                <call functionName="GetPosition">
+                    <call functionName="GetSpatialInfo">
+                        <call userFunctionID="UserFunction_0">
+                            <parameterID id="FunctionArgument_2"/>
+                        </call>
+                    </call>
+                </call>
+                <call functionName="GetSpeed">
+                    <call functionName="GetSpatialInfo">
+                        <parameterID id="FunctionArgument_2"/>
+                    </call>
+                </call>
+            </call>
+        </functionCall>
+        <parameter name="Räuber" id="FunctionArgument_1">
+            <listType>
+                <simObjectType/>
+            </listType>
+        </parameter>
+        <parameter name="ich" id="FunctionArgument_2">
+            <simObjectType/>
+        </parameter>
+        <voidType/>
+    </userFunction>
+    <ressourceClass name="Höhle" id="ResourceClass_0">
+        <features>
+            <buildin>Standard Functions</buildin>
+            <buildin>Standard Object Functions</buildin>
+            <features id="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeature" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="0.0" y="0.0">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="0.0" y="0.0"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="0"/>
+                </spatialInfo>
+            </features>
+        </features>
+        <interactionelements/>
+    </ressourceClass>
+    <ressourceClass name="Pfanze" id="ResourceClass_1">
+        <features>
+            <buildin>Standard Functions</buildin>
+            <buildin>Standard Object Functions</buildin>
+            <features id="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeature" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="1"
+                    x="0.0" y="0.0">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="0.0" y="0.0"/>
+                    </figure>
+                    <shapeColor red="204" green="0" blue="204"/>
+                </spatialInfo>
+            </features>
+        </features>
+        <bodyClass>
+            <bodyVariableClass id="BodyVariableClass_0">
+                <variableClass name="Menge" id="VariableClass_0"
+                    writeable="false" external="true" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <doubleType/>
+                    <defaultValue>
+                        <double value="100.0"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+        </bodyClass>
+        <interactionelements/>
+    </ressourceClass>
+    <agentClass name="Jäger" id="ActivityAgentClass_0">
+        <features>
+            <buildin>Standard Functions</buildin>
+            <buildin>Standard Object Functions</buildin>
+            <features id="SpatialInfoObjectFeatureClass_2"
+                xsi:type="XMLSpatialInfoFeature" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="1"
+                    x="0.0" y="0.0">
+                    <figure direction="0.0" sideLength="10.0" xsi:type="XMLSquare">
+                        <balancePoint x="5.0" y="5.0"/>
+                        <position x="0.0" y="0.0"/>
+                    </figure>
+                    <shapeColor red="255" green="0" blue="0"/>
+                </spatialInfo>
+            </features>
+        </features>
+        <bodyClass>
+            <bodyVariableClass id="BodyVariableClass_1">
+                <variableClass name="Magenfüllung" id="VariableClass_1"
+                    writeable="true" external="false" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <doubleType/>
+                    <defaultValue>
+                        <double value="0.0"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_2">
+                <variableClass name="Ziele" id="VariableClass_2"
+                    writeable="true" external="false" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <listType>
+                        <simObjectType/>
+                    </listType>
+                    <defaultValue>
+                        <call functionName="CreateList">
+                            <listType>
+                                <simObjectType/>
+                            </listType>
+                        </call>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_3">
+                <variableClass name="nächste Beute" id="VariableClass_3"
+                    writeable="true" external="false" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <simObjectType/>
+                    <defaultValue>
+                        <simObject/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+        </bodyClass>
+        <interactionelements/>
+        <reasoning>
+            <composedActivity name="Reasoning" id="ActivityGraph_0">
+                <entryActivity name="Entry Activity"
+                    id="EntryActivityGraphLeaf_0" x="203" y="160"
+                    width="15" height="15"/>
+                <exitActivity name="Exit Activity"
+                    id="ExitActivityGraphLeaf_0" x="382" y="237"
+                    width="15" height="15"/>
+                <emergencyActivity name="Emergency Activity"
+                    id="EmergencyActivityGraphLeaf_0" x="183" y="8"
+                    width="130" height="50"/>
+                <actionActivity name="Rumlaufen"
+                    id="ActionActivityGraphLeaf_0" x="585" y="202"
+                    width="90" height="70" instantly="true">
+                    <actionRule>
+                        <action>
+                            <call functionName="ChangeDirectionBy">
+                                <call functionName="GetMySpatialInfo"/>
+                                <call functionName="RandomDouble">
+                                    <integer value="-10"/>
+                                    <integer value="10"/>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="Move">
+                                <call functionName="GetMySpatialInfo"/>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <actionActivity name="wahrnehmen"
+                    id="ActionActivityGraphLeaf_1" x="471" y="76"
+                    width="90" height="70" instantly="true">
+                    <actionRule>
+                        <action>
+                            <call functionName="SetVariable">
+                                <variableID id="BodyVariableClass_2"/>
+                                <call functionName="AsList">
+                                    <call functionName="Select">
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="And">
+                                    <call functionName="InstanceOf">
+                                    <parameterID id="FunctionArgument_5"/>
+                                    <objectClassID id="ActivityAgentClass_1"/>
+                                    </call>
+                                    <call functionName="Not">
+                                    <call functionName="GetVariableFrom">
+                                    <variableID
+                                    writeable="false" id="BodyVariableClass_6"/>
+                                    <parameterID id="FunctionArgument_5"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="obj" id="FunctionArgument_5">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    <call functionName="ObserveObjectsOnPosition">
+                                    <call functionName="GetMyPosition"/>
+                                    <call functionName="GetVariableFrom">
+                                    <variableID
+                                    writeable="false" id="BodyVariableClass_15"/>
+                                    <call functionName="GetWorld"/>
+                                    </call>
+                                    <boolean value="false"/>
+                                    <boolean value="false"/>
+                                    </call>
+                                    </call>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <actionActivity name="Zum Ziel"
+                    id="ActionActivityGraphLeaf_2" x="580" y="12"
+                    width="90" height="70" instantly="true">
+                    <actionRule>
+                        <action>
+                            <call functionName="SetVariable">
+                                <variableID id="BodyVariableClass_3"/>
+                                <call functionName="Maximize">
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="If Then Else">
+                                    <call functionName="&lt;">
+                                    <call functionName="Distance">
+                                    <call functionName="GetMySpatialInfo"/>
+                                    <call functionName="GetSpatialInfo">
+                                    <parameterID id="FunctionArgument_6"/>
+                                    </call>
+                                    </call>
+                                    <call functionName="Distance">
+                                    <call functionName="GetMySpatialInfo"/>
+                                    <call functionName="GetSpatialInfo">
+                                    <parameterID id="FunctionArgument_7"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    <parameterID id="FunctionArgument_6"/>
+                                    <parameterID id="FunctionArgument_7"/>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="o1" id="FunctionArgument_6">
+                                    <simObjectType/>
+                                    </parameter>
+                                    <parameter name="o2" id="FunctionArgument_7">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_2"/>
+                                    </call>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="MoveTowardsPos">
+                                <call functionName="GetMySpatialInfo"/>
+                                <call functionName="GetPosition">
+                                    <call functionName="GetSpatialInfo">
+                                    <call functionName="GetVariable">
+                                    <variableID
+                                    writeable="false" id="BodyVariableClass_3"/>
+                                    </call>
+                                    </call>
+                                </call>
+                                <call functionName="GetSpeed">
+                                    <call functionName="GetMySpatialInfo"/>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <actionActivity name="Untitled Atomic Activity"
+                    id="ActionActivityGraphLeaf_3" x="737" y="108"
+                    width="90" height="70" instantly="true">
+                    <actionRule>
+                        <action>
+                            <call functionName="Kill">
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_3"/>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <actionActivity name="Sync"
+                    id="ActionActivityGraphLeaf_4" x="263" y="68"
+                    width="90" height="70">
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <chainRule toActivityID="ActionActivityGraphLeaf_0" fromActivityID="ActionActivityGraphLeaf_1">
+                    <precondition>
+                        <call functionName="IsEmpty">
+                            <call functionName="GetVariable">
+                                <variableID writeable="false" id="BodyVariableClass_2"/>
+                            </call>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_3" fromActivityID="ActionActivityGraphLeaf_2">
+                    <precondition>
+                        <call functionName="Collision">
+                            <call functionName="GetMySpatialInfo"/>
+                            <call functionName="GetSpatialInfo">
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_3"/>
+                                </call>
+                            </call>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_4" fromActivityID="EntryActivityGraphLeaf_0">
+                    <precondition>
+                        <boolean value="true"/>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_1" fromActivityID="ActionActivityGraphLeaf_4">
+                    <precondition>
+                        <boolean value="true"/>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_4" fromActivityID="ActionActivityGraphLeaf_3">
+                    <controlPoint x="661" y="333"/>
+                    <precondition>
+                        <boolean value="true"/>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_4" fromActivityID="ActionActivityGraphLeaf_0">
+                    <precondition>
+                        <boolean value="true"/>
+                    </precondition>
+                </chainRule>
+                <otherwiseChainRule
+                    toActivityID="ActionActivityGraphLeaf_2" fromDecisionActivityID="ActionActivityGraphLeaf_1"/>
+                <otherwiseChainRule
+                    toActivityID="ActionActivityGraphLeaf_4" fromDecisionActivityID="ActionActivityGraphLeaf_2"/>
+            </composedActivity>
+        </reasoning>
+    </agentClass>
+    <agentClass name="Beute" id="ActivityAgentClass_1">
+        <features>
+            <buildin>Standard Functions</buildin>
+            <buildin>Standard Object Functions</buildin>
+            <features id="SpatialInfoObjectFeatureClass_3"
+                xsi:type="XMLSpatialInfoFeature" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="1"
+                    x="0.0" y="0.0">
+                    <figure direction="0.0" sideLength="10.0" xsi:type="XMLSquare">
+                        <balancePoint x="5.0" y="5.0"/>
+                        <position x="0.0" y="0.0"/>
+                    </figure>
+                    <shapeColor red="0" green="204" blue="0"/>
+                </spatialInfo>
+            </features>
+        </features>
+        <bodyClass>
+            <bodyVariableClass id="BodyVariableClass_4">
+                <variableClass name="Panik-Level" id="VariableClass_4"
+                    writeable="true" external="false" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <doubleType/>
+                    <defaultValue>
+                        <double value="0.0"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_5">
+                <variableClass name="Vorräte" id="VariableClass_5"
+                    writeable="false" external="false"
+                    partOfName="false" configValue="true" analysisValue="true">
+                    <doubleType/>
+                    <defaultValue>
+                        <double value="0.0"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_6">
+                <variableClass name="bin in Höhle" id="VariableClass_6"
+                    writeable="true" external="true" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <booleanType/>
+                    <defaultValue>
+                        <boolean value="false"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_7">
+                <variableClass name="Angstschwelle" id="VariableClass_7"
+                    writeable="false" external="false"
+                    partOfName="false" configValue="true" analysisValue="true">
+                    <doubleType/>
+                    <defaultValue>
+                        <double value="0.0"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_8">
+                <variableClass name="Wahrnehmbare Objekte"
+                    id="VariableClass_8" writeable="true"
+                    external="false" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <listType>
+                        <simObjectType/>
+                    </listType>
+                    <defaultValue>
+                        <call functionName="CreateList">
+                            <listType>
+                                <simObjectType/>
+                            </listType>
+                        </call>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_9">
+                <variableClass name="dabei Räuber" id="VariableClass_9"
+                    writeable="true" external="false" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <listType>
+                        <simObjectType/>
+                    </listType>
+                    <defaultValue>
+                        <call functionName="CreateList">
+                            <listType>
+                                <simObjectType/>
+                            </listType>
+                        </call>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_10">
+                <variableClass name="Magenfüllung" id="VariableClass_10"
+                    hasNextValue="true" writeable="true"
+                    external="false" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <doubleType/>
+                    <defaultValue>
+                        <double value="100.0"/>
+                    </defaultValue>
+                    <nextValue>
+                        <call functionName="-">
+                            <call functionName="GetVariable">
+                                <variableID writeable="false" id="BodyVariableClass_10"/>
+                            </call>
+                            <double value="1.0"/>
+                        </call>
+                    </nextValue>
+                </variableClass>
+            </bodyVariableClass>
+        </bodyClass>
+        <interactionelements/>
+        <reasoning>
+            <composedActivity name="Reasoning" id="ActivityGraph_1">
+                <entryActivity name="Entry Activity"
+                    id="EntryActivityGraphLeaf_1" x="138" y="160"
+                    width="15" height="15"/>
+                <exitActivity name="Exit Activity"
+                    id="ExitActivityGraphLeaf_1" x="378" y="25"
+                    width="15" height="15"/>
+                <emergencyActivity name="Emergency Activity"
+                    id="EmergencyActivityGraphLeaf_1" x="95" y="24"
+                    width="130" height="50"/>
+                <actionActivity name="Rumlaufen"
+                    id="ActionActivityGraphLeaf_5" x="337" y="142"
+                    width="90" height="70" type="state like">
+                    <actionRule>
+                        <action>
+                            <call functionName="ChangeDirectionBy">
+                                <call functionName="GetMySpatialInfo"/>
+                                <call functionName="RandomDouble">
+                                    <double value="-10.0"/>
+                                    <double value="10.0"/>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="Move">
+                                <call functionName="GetMySpatialInfo"/>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="SetVariable">
+                                <variableID id="BodyVariableClass_8"/>
+                                <call functionName="AsList">
+                                    <call functionName="ObserveObjectsOnPosition">
+                                    <call functionName="GetMyPosition"/>
+                                    <call functionName="GetVariableFrom">
+                                    <variableID
+                                    writeable="false" id="BodyVariableClass_12"/>
+                                    <call functionName="GetWorld"/>
+                                    </call>
+                                    <boolean value="false"/>
+                                    <boolean value="true"/>
+                                    </call>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="SetVariable">
+                                <variableID id="BodyVariableClass_9"/>
+                                <call functionName="AsList">
+                                    <call functionName="Select">
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="InstanceOf">
+                                    <parameterID id="FunctionArgument_8"/>
+                                    <objectClassID id="ActivityAgentClass_0"/>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="obj" id="FunctionArgument_8">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    <call functionName="GetVariable">
+                                    <variableID
+                                    writeable="false" id="BodyVariableClass_8"/>
+                                    </call>
+                                    </call>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <actionActivity name="Räuber!"
+                    id="ActionActivityGraphLeaf_6" x="585" y="64"
+                    width="90" height="70">
+                    <actionRule>
+                        <action>
+                            <call functionName="IncrementVar">
+                                <variableID id="BodyVariableClass_4"/>
+                                <double value="1.0"/>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="SetVariable">
+                                <variableID id="BodyVariableClass_8"/>
+                                <call functionName="AsList">
+                                    <call functionName="ObserveObjectsOnPosition">
+                                    <call functionName="GetMyPosition"/>
+                                    <call functionName="GetVariableFrom">
+                                    <variableID
+                                    writeable="false" id="BodyVariableClass_12"/>
+                                    <call functionName="GetWorld"/>
+                                    </call>
+                                    <boolean value="false"/>
+                                    <boolean value="true"/>
+                                    </call>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="SetVariable">
+                                <variableID id="BodyVariableClass_9"/>
+                                <call functionName="AsList">
+                                    <call functionName="Select">
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="InstanceOf">
+                                    <parameterID id="FunctionArgument_9"/>
+                                    <objectClassID id="ActivityAgentClass_0"/>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="obj" id="FunctionArgument_9">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    <call functionName="GetVariable">
+                                    <variableID
+                                    writeable="false" id="BodyVariableClass_8"/>
+                                    </call>
+                                    </call>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call userFunctionID="UserFunction_1">
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_9"/>
+                                </call>
+                                <call functionName="GetCurrentSimObject"/>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <documentationNode name="" id="GraphDocumentationLeaf_0"
+                    documentation="Beute sollte zur nächsten Höhle laufen, wenn sie in Höhle drin sitzt, dann sollte der &amp;#010;Panik-Level langsam abgesenkt werden. Wenn der Panik-Level unter globaler Schwelle liegt, dann&amp;#010;sollte Beute wieder rauskommen..."
+                    x="841" y="176" width="90" height="70"/>
+                <actionActivity name="Abregen"
+                    id="ActionActivityGraphLeaf_7" x="590" y="181"
+                    width="90" height="70">
+                    <actionRule>
+                        <action>
+                            <call functionName="IncrementVar">
+                                <variableID id="BodyVariableClass_4"/>
+                                <call functionName="GetVariableFrom">
+                                    <variableID writeable="false" id="BodyVariableClass_14"/>
+                                    <call functionName="GetWorld"/>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="SetVariable">
+                                <variableID id="BodyVariableClass_8"/>
+                                <call functionName="AsList">
+                                    <call functionName="ObserveObjectsOnPosition">
+                                    <call functionName="GetMyPosition"/>
+                                    <call functionName="GetVariableFrom">
+                                    <variableID
+                                    writeable="false" id="BodyVariableClass_12"/>
+                                    <call functionName="GetWorld"/>
+                                    </call>
+                                    <boolean value="false"/>
+                                    <boolean value="true"/>
+                                    </call>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="SetVariable">
+                                <variableID id="BodyVariableClass_9"/>
+                                <call functionName="AsList">
+                                    <call functionName="Select">
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="InstanceOf">
+                                    <parameterID id="FunctionArgument_10"/>
+                                    <objectClassID id="ActivityAgentClass_0"/>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="obj" id="FunctionArgument_10">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    <call functionName="GetVariable">
+                                    <variableID
+                                    writeable="false" id="BodyVariableClass_8"/>
+                                    </call>
+                                    </call>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <exitActionRule>
+                        <action>
+                            <call functionName="SetVariable">
+                                <variableID external="false" id="BodyVariableClass_6"/>
+                                <boolean value="false"/>
+                            </call>
+                        </action>
+                    </exitActionRule>
+                    <exitActionRule>
+                        <action>
+                            <call functionName="ChangeShapeColor">
+                                <call functionName="GetMySpatialInfo"/>
+                                <color red="0" green="204" blue="0"/>
+                            </call>
+                        </action>
+                    </exitActionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <actionActivity name="abwarten"
+                    id="ActionActivityGraphLeaf_8" x="724" y="63"
+                    width="90" height="70">
+                    <actionRule>
+                        <action>
+                            <call functionName="SetVariable">
+                                <variableID external="false" id="BodyVariableClass_6"/>
+                                <boolean value="true"/>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="ChangeShapeColor">
+                                <call functionName="GetMySpatialInfo"/>
+                                <color red="204" green="204" blue="204"/>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <actionActivity name="Pflanzen fressen"
+                    id="ActionActivityGraphLeaf_9" x="466" y="264"
+                    width="90" height="70">
+                    <actionRule>
+                        <action>
+                            <call functionName="BeamTo">
+                                <call functionName="GetMySpatialInfo"/>
+                                <call functionName="GetPosition">
+                                    <call functionName="GetSpatialInfo">
+                                    <call functionName="Maximize">
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="If Then Else">
+                                    <call functionName=">">
+                                    <call functionName="Distance">
+                                    <call functionName="GetMySpatialInfo"/>
+                                    <call functionName="GetSpatialInfo">
+
+                                    <parameterID id="FunctionArgument_11"/>
+                                    </call>
+                                    </call>
+                                    <call functionName="Distance">
+                                    <call functionName="GetMySpatialInfo"/>
+                                    <call functionName="GetSpatialInfo">
+
+                                    <parameterID id="FunctionArgument_12"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    <parameterID id="FunctionArgument_12"/>
+                                    <parameterID id="FunctionArgument_11"/>
+                                    </call>
+                                    </functionCall>
+                                    <parameter
+                                    name="pflanze1" id="FunctionArgument_11">
+                                    <simObjectType/>
+                                    </parameter>
+                                    <parameter
+                                    name="pflanze2" id="FunctionArgument_12">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    <call functionName="Select">
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="InstanceOf">
+                                    <parameterID id="FunctionArgument_13"/>
+
+                                    <objectClassID id="ResourceClass_1"/>
+                                    </call>
+                                    </functionCall>
+                                    <parameter
+                                    name="objekt" id="FunctionArgument_13">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    <call functionName="GetVariable">
+                                    <variableID
+                                    writeable="false" id="BodyVariableClass_8"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </call>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="IncrementVar">
+                                <variableID id="BodyVariableClass_10"/>
+                                <call functionName="GetVariableFrom">
+                                    <variableID id="BodyVariableClass_0"/>
+                                    <call functionName="Maximize">
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="If Then Else">
+                                    <call functionName=">">
+                                    <call functionName="Distance">
+                                    <call functionName="GetMySpatialInfo"/>
+                                    <call functionName="GetSpatialInfo">
+
+                                    <parameterID id="FunctionArgument_14"/>
+                                    </call>
+                                    </call>
+                                    <call functionName="Distance">
+                                    <call functionName="GetMySpatialInfo"/>
+                                    <call functionName="GetSpatialInfo">
+
+                                    <parameterID id="FunctionArgument_15"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    <parameterID id="FunctionArgument_15"/>
+                                    <parameterID id="FunctionArgument_14"/>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="pflanze1" id="FunctionArgument_14">
+                                    <simObjectType/>
+                                    </parameter>
+                                    <parameter name="pflanze2" id="FunctionArgument_15">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    <call functionName="Select">
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="InstanceOf">
+                                    <parameterID id="FunctionArgument_16"/>
+                                    <objectClassID id="ResourceClass_1"/>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="objekt" id="FunctionArgument_16">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    <call functionName="GetVariable">
+                                    <variableID
+                                    writeable="false" id="BodyVariableClass_8"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="Kill">
+                                <call functionName="Maximize">
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="If Then Else">
+                                    <call functionName=">">
+                                    <call functionName="Distance">
+                                    <call functionName="GetMySpatialInfo"/>
+                                    <call functionName="GetSpatialInfo">
+                                    <parameterID id="FunctionArgument_17"/>
+                                    </call>
+                                    </call>
+                                    <call functionName="Distance">
+                                    <call functionName="GetMySpatialInfo"/>
+                                    <call functionName="GetSpatialInfo">
+                                    <parameterID id="FunctionArgument_18"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    <parameterID id="FunctionArgument_18"/>
+                                    <parameterID id="FunctionArgument_17"/>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="pflanze1" id="FunctionArgument_17">
+                                    <simObjectType/>
+                                    </parameter>
+                                    <parameter name="pflanze2" id="FunctionArgument_18">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    <call functionName="Select">
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="InstanceOf">
+                                    <parameterID id="FunctionArgument_19"/>
+                                    <objectClassID id="ResourceClass_1"/>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="objekt" id="FunctionArgument_19">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    <call functionName="GetVariable">
+                                    <variableID
+                                    writeable="false" id="BodyVariableClass_8"/>
+                                    </call>
+                                    </call>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <chainRule toActivityID="ActionActivityGraphLeaf_5" fromActivityID="EntryActivityGraphLeaf_1">
+                    <precondition>
+                        <boolean value="true"/>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_7" fromActivityID="ActionActivityGraphLeaf_6">
+                    <precondition>
+                        <call functionName="IsEmpty">
+                            <call functionName="GetVariable">
+                                <variableID writeable="false" id="BodyVariableClass_9"/>
+                            </call>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_6" fromActivityID="ActionActivityGraphLeaf_5">
+                    <controlPoint x="470" y="94"/>
+                    <precondition>
+                        <call functionName="Not">
+                            <call functionName="IsEmpty">
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_9"/>
+                                </call>
+                            </call>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_5" fromActivityID="ActionActivityGraphLeaf_7">
+                    <precondition>
+                        <call functionName="And">
+                            <call functionName="&lt;">
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_4"/>
+                                </call>
+                                <call functionName="GetVariableFrom">
+                                    <variableID writeable="false" id="BodyVariableClass_13"/>
+                                    <call functionName="GetWorld"/>
+                                </call>
+                            </call>
+                            <call functionName="IsEmpty">
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_9"/>
+                                </call>
+                            </call>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_8" fromActivityID="ActionActivityGraphLeaf_6">
+                    <precondition>
+                        <call functionName="Collision">
+                            <call functionName="GetSpatialInfo">
+                                <call userFunctionID="UserFunction_0">
+                                    <call functionName="GetCurrentSimObject"/>
+                                </call>
+                            </call>
+                            <call functionName="GetMySpatialInfo"/>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_7" fromActivityID="ActionActivityGraphLeaf_8">
+                    <precondition>
+                        <boolean value="true"/>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ExitActivityGraphLeaf_1" fromActivityID="ActionActivityGraphLeaf_5">
+                    <precondition>
+                        <call functionName="&lt;">
+                            <call functionName="GetVariable">
+                                <variableID writeable="false" id="BodyVariableClass_10"/>
+                            </call>
+                            <double value="0.0"/>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_9" fromActivityID="ActionActivityGraphLeaf_5">
+                    <precondition>
+                        <call functionName="And">
+                            <call functionName="&lt;">
+                                <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_10"/>
+                                </call>
+                                <double value="50.0"/>
+                            </call>
+                            <call functionName="IsEmpty">
+                                <call functionName="Select">
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="InstanceOf">
+                                    <parameterID id="FunctionArgument_20"/>
+                                    <objectClassID id="ActivityAgentClass_0"/>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="jäger?" id="FunctionArgument_20">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    <call functionName="GetVariable">
+                                    <variableID writeable="false" id="BodyVariableClass_8"/>
+                                    </call>
+                                </call>
+                            </call>
+                            <call functionName="Not">
+                                <call functionName="IsEmpty">
+                                    <call functionName="Select">
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="InstanceOf">
+                                    <parameterID id="FunctionArgument_21"/>
+                                    <objectClassID id="ResourceClass_1"/>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="pflanze?" id="FunctionArgument_21">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    <call functionName="GetVariable">
+                                    <variableID
+                                    writeable="false" id="BodyVariableClass_8"/>
+                                    </call>
+                                    </call>
+                                </call>
+                            </call>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_5" fromActivityID="ActionActivityGraphLeaf_9">
+                    <controlPoint x="407" y="258"/>
+                    <precondition>
+                        <boolean value="true"/>
+                    </precondition>
+                </chainRule>
+            </composedActivity>
+        </reasoning>
+    </agentClass>
+    <worldClass name="Savanne" id="ActivityWorldClass_0" updateBeforeAllObjects="false">
+        <features>
+            <buildin>Standard Functions</buildin>
+            <buildin>Standard Object Functions</buildin>
+            <features id="SpatialMapFeatureClass_0"
+                xsi:type="XMLSpatialMapFeature" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+        </features>
+        <bodyClass>
+            <bodyVariableClass id="BodyVariableClass_11">
+                <variableClass name="Test-Szenario"
+                    id="VariableClass_11" writeable="false"
+                    external="true" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <booleanType/>
+                    <defaultValue>
+                        <boolean value="true"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_12">
+                <variableClass name="Wahrnehmungsradius Beute"
+                    id="VariableClass_12" writeable="true"
+                    external="true" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <doubleType/>
+                    <defaultValue>
+                        <double value="50.0"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_13">
+                <variableClass name="Angstschwelle Beute"
+                    id="VariableClass_13" writeable="true"
+                    external="true" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <doubleType/>
+                    <defaultValue>
+                        <double value="10.0"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_14">
+                <variableClass name="Abregen-Delta"
+                    id="VariableClass_14" writeable="true"
+                    external="true" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <doubleType/>
+                    <defaultValue>
+                        <double value="-1.0"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_15">
+                <variableClass name="Wahrnehmungsradius Räuber"
+                    id="VariableClass_15" writeable="true"
+                    external="true" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <doubleType/>
+                    <defaultValue>
+                        <double value="100.0"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_16">
+                <variableClass name="Anzahl Beute" id="VariableClass_16"
+                    writeable="true" external="true" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <doubleType/>
+                    <defaultValue>
+                        <double value="100.0"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_17">
+                <variableClass name="Anzahl Räuber"
+                    id="VariableClass_17" writeable="true"
+                    external="true" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <doubleType/>
+                    <defaultValue>
+                        <double value="50.0"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+            <bodyVariableClass id="BodyVariableClass_18">
+                <variableClass name="Anzahl Höhlen"
+                    id="VariableClass_18" writeable="true"
+                    external="true" partOfName="false"
+                    configValue="true" analysisValue="true">
+                    <doubleType/>
+                    <defaultValue>
+                        <double value="50.0"/>
+                    </defaultValue>
+                </variableClass>
+            </bodyVariableClass>
+        </bodyClass>
+        <interactionelements>
+            <interactionElement name="Wahrnehmungsradius Beute" id="InteractionElementClass_0">
+                <subElements name="Wahrnehmungsradius Beute"
+                    id="InteractionElementClass_1" declarationID="BodyVariableClass_12">
+                    <layout x="1" y="1" width="316" height="53"/>
+                    <widgetID>doubleTypeSlider</widgetID>
+                    <config id="doubleTypeSlider" name="Config">
+                        <configItem>
+                            <id>enableBorder</id>
+                            <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>borderColor</id>
+                            <value red="0" green="0" blue="0"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>backgroundColor</id>
+                            <value red="236" green="233" blue="216"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>caption</id>
+                            <value value="Sichtweite der Beute"
+                                xsi:type="XMLString" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>captionAlignment</id>
+                            <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <fullClassName>de.uniwue.ki.util.EAlignment</fullClassName>
+                                <value>LEFT</value>
+                            </value>
+                        </configItem>
+                        <subConfigs id="slider" name="Slider">
+                            <configItem>
+                                <id>minValue</id>
+                                <value value="0" xsi:type="XMLInteger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                            <configItem>
+                                <id>maxValue</id>
+                                <value value="100" xsi:type="XMLInteger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                            <configItem>
+                                <id>tickSpace</id>
+                                <value value="25" xsi:type="XMLInteger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                            <configItem>
+                                <id>orientation</id>
+                                <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <fullClassName>de.uniwue.ki.util.EOrientation</fullClassName>
+                                    <value>HORIZONTAL</value>
+                                </value>
+                            </configItem>
+                            <configItem>
+                                <id>invert</id>
+                                <value value="false"
+                                    xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                        </subConfigs>
+                    </config>
+                </subElements>
+                <layout x="0" y="0" width="715" height="344"/>
+                <widgetID>Container</widgetID>
+                <config id="Container" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundStyle</id>
+                        <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <fullClassName>de.uniwue.ki.gui.util.image.EBackGroundStyle</fullClassName>
+                            <value>CENTER</value>
+                        </value>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement name="Wahrnehmungsradius Jäger" id="InteractionElementClass_2">
+                <subElements name="Wahrnehmungsradius Räuber"
+                    id="InteractionElementClass_3" declarationID="BodyVariableClass_15">
+                    <layout x="1" y="1" width="323" height="53"/>
+                    <widgetID>doubleTypeSlider</widgetID>
+                    <config id="doubleTypeSlider" name="Config">
+                        <configItem>
+                            <id>enableBorder</id>
+                            <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>borderColor</id>
+                            <value red="0" green="0" blue="0"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>backgroundColor</id>
+                            <value red="236" green="233" blue="216"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>caption</id>
+                            <value value="Sichtweite der Räuber"
+                                xsi:type="XMLString" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>captionAlignment</id>
+                            <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <fullClassName>de.uniwue.ki.util.EAlignment</fullClassName>
+                                <value>LEFT</value>
+                            </value>
+                        </configItem>
+                        <subConfigs id="slider" name="Slider">
+                            <configItem>
+                                <id>minValue</id>
+                                <value value="0" xsi:type="XMLInteger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                            <configItem>
+                                <id>maxValue</id>
+                                <value value="100" xsi:type="XMLInteger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                            <configItem>
+                                <id>tickSpace</id>
+                                <value value="25" xsi:type="XMLInteger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                            <configItem>
+                                <id>orientation</id>
+                                <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <fullClassName>de.uniwue.ki.util.EOrientation</fullClassName>
+                                    <value>HORIZONTAL</value>
+                                </value>
+                            </configItem>
+                            <configItem>
+                                <id>invert</id>
+                                <value value="false"
+                                    xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                        </subConfigs>
+                    </config>
+                </subElements>
+                <layout x="0" y="0" width="400" height="400"/>
+                <widgetID>Container</widgetID>
+                <config id="Container" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundStyle</id>
+                        <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <fullClassName>de.uniwue.ki.gui.util.image.EBackGroundStyle</fullClassName>
+                            <value>CENTER</value>
+                        </value>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement name="Startanzahl Beute" id="InteractionElementClass_4">
+                <subElements name="Anzahl Beute"
+                    id="InteractionElementClass_5" declarationID="BodyVariableClass_16">
+                    <layout x="1" y="1" width="145" height="32"/>
+                    <widgetID>Textfield</widgetID>
+                    <config id="Textfield" name="Config">
+                        <configItem>
+                            <id>enableBorder</id>
+                            <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>borderColor</id>
+                            <value red="0" green="0" blue="0"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>backgroundColor</id>
+                            <value red="236" green="233" blue="216"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>caption</id>
+                            <value value="Anzahl Beute"
+                                xsi:type="XMLString" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>captionAlignment</id>
+                            <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <fullClassName>de.uniwue.ki.util.EAlignment</fullClassName>
+                                <value>LEFT</value>
+                            </value>
+                        </configItem>
+                        <subConfigs id="textfield" name="Textfield">
+                            <configItem>
+                                <id>fractionDigits</id>
+                                <value value="4" xsi:type="XMLInteger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                        </subConfigs>
+                    </config>
+                </subElements>
+                <layout x="0" y="0" width="400" height="400"/>
+                <widgetID>Container</widgetID>
+                <config id="Container" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundStyle</id>
+                        <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <fullClassName>de.uniwue.ki.gui.util.image.EBackGroundStyle</fullClassName>
+                            <value>CENTER</value>
+                        </value>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement name="Startanzahl Jäger" id="InteractionElementClass_6">
+                <subElements name="Anzahl Räuber"
+                    id="InteractionElementClass_7" declarationID="BodyVariableClass_17">
+                    <layout x="1" y="1" width="152" height="32"/>
+                    <widgetID>Textfield</widgetID>
+                    <config id="Textfield" name="Config">
+                        <configItem>
+                            <id>enableBorder</id>
+                            <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>borderColor</id>
+                            <value red="0" green="0" blue="0"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>backgroundColor</id>
+                            <value red="236" green="233" blue="216"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>caption</id>
+                            <value value="Anzahl Räuber"
+                                xsi:type="XMLString" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>captionAlignment</id>
+                            <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <fullClassName>de.uniwue.ki.util.EAlignment</fullClassName>
+                                <value>LEFT</value>
+                            </value>
+                        </configItem>
+                        <subConfigs id="textfield" name="Textfield">
+                            <configItem>
+                                <id>fractionDigits</id>
+                                <value value="4" xsi:type="XMLInteger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                        </subConfigs>
+                    </config>
+                </subElements>
+                <layout x="0" y="0" width="400" height="400"/>
+                <widgetID>Container</widgetID>
+                <config id="Container" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundStyle</id>
+                        <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <fullClassName>de.uniwue.ki.gui.util.image.EBackGroundStyle</fullClassName>
+                            <value>CENTER</value>
+                        </value>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement name="Startanzahl Höhlen" id="InteractionElementClass_8">
+                <subElements name="Anzahl Höhlen"
+                    id="InteractionElementClass_9" declarationID="BodyVariableClass_18">
+                    <layout x="1" y="1" width="150" height="32"/>
+                    <widgetID>Textfield</widgetID>
+                    <config id="Textfield" name="Config">
+                        <configItem>
+                            <id>enableBorder</id>
+                            <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>borderColor</id>
+                            <value red="0" green="0" blue="0"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>backgroundColor</id>
+                            <value red="236" green="233" blue="216"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>caption</id>
+                            <value value="Anzahl Höhlen"
+                                xsi:type="XMLString" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>captionAlignment</id>
+                            <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <fullClassName>de.uniwue.ki.util.EAlignment</fullClassName>
+                                <value>LEFT</value>
+                            </value>
+                        </configItem>
+                        <subConfigs id="textfield" name="Textfield">
+                            <configItem>
+                                <id>fractionDigits</id>
+                                <value value="4" xsi:type="XMLInteger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                        </subConfigs>
+                    </config>
+                </subElements>
+                <layout x="0" y="0" width="400" height="400"/>
+                <widgetID>Container</widgetID>
+                <config id="Container" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundStyle</id>
+                        <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <fullClassName>de.uniwue.ki.gui.util.image.EBackGroundStyle</fullClassName>
+                            <value>CENTER</value>
+                        </value>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement name="Weltkarte" id="InteractionElementClass_10">
+                <subElements name="SpatialMap"
+                    id="InteractionElementClass_11" declarationID="SpatialMapFeatureClass_0">
+                    <layout x="1" y="1" width="517" height="500"/>
+                    <widgetID>SpatialMapWidget</widgetID>
+                    <config id="SpatialMapWidget" name="Config">
+                        <configItem>
+                            <id>enableBorder</id>
+                            <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>borderColor</id>
+                            <value red="0" green="0" blue="0"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>backgroundColor</id>
+                            <value red="236" green="233" blue="216"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                    </config>
+                </subElements>
+                <layout x="0" y="0" width="400" height="400"/>
+                <widgetID>Container</widgetID>
+                <config id="Container" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundStyle</id>
+                        <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <fullClassName>de.uniwue.ki.gui.util.image.EBackGroundStyle</fullClassName>
+                            <value>CENTER</value>
+                        </value>
+                    </configItem>
+                </config>
+            </interactionElement>
+        </interactionelements>
+        <reasoning>
+            <composedActivity name="Reasoning" id="ActivityGraph_2">
+                <entryActivity name="Entry Activity"
+                    id="EntryActivityGraphLeaf_2" x="147" y="92"
+                    width="15" height="15"/>
+                <exitActivity name="Exit Activity"
+                    id="ExitActivityGraphLeaf_2" x="136" y="22"
+                    width="15" height="15"/>
+                <emergencyActivity name="Emergency Activity"
+                    id="EmergencyActivityGraphLeaf_2" x="349" y="192"
+                    width="130" height="50"/>
+                <actionActivity name="Startzustand erzeugen"
+                    id="ActionActivityGraphLeaf_10" x="164" y="178"
+                    width="90" height="70" type="state like">
+                    <actionRule>
+                        <action>
+                            <call functionName="ForTimes">
+                                <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="CreateObjectAndRemember">
+                                    <objectInstance
+                                    id="ActivityAgentInstance_0" objectClassID="ActivityAgentClass_1">
+                                    <bodyVariableInstance bodyVariableClassID="BodyVariableClass_4"/>
+                                    <bodyVariableInstance bodyVariableClassID="BodyVariableClass_5"/>
+                                    <bodyVariableInstance bodyVariableClassID="BodyVariableClass_6"/>
+                                    <bodyVariableInstance bodyVariableClassID="BodyVariableClass_7"/>
+                                    <bodyVariableInstance bodyVariableClassID="BodyVariableClass_8"/>
+                                    <bodyVariableInstance bodyVariableClassID="BodyVariableClass_9"/>
+                                    <bodyVariableInstance bodyVariableClassID="BodyVariableClass_10"/>
+                                    <featureInstance
+                                    featureObjectClassID="SpatialInfoObjectFeatureClass_3"
+                                    xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <spatialInfo
+                                    speed="10.0"
+                                    direction="0.0"
+                                    drawPriority="3.0"
+                                    imageStyle="2"
+                                    shapeStyle="1"
+                                    x="0.0" y="0.0">
+                                    <figure
+                                    direction="0.0"
+                                    sideLength="10.0" xsi:type="XMLSquare">
+
+                                    <balancePoint
+                                    x="5.0" y="5.0"/>
+                                    <position
+                                    x="0.0" y="0.0"/>
+                                    </figure>
+                                    <shapeColor
+                                    red="0"
+                                    green="204" blue="0"/>
+                                    </spatialInfo>
+                                    </featureInstance>
+                                    </objectInstance>
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="BeamTo">
+                                    <call functionName="GetSpatialInfo">
+                                    <parameterID id="FunctionArgument_26"/>
+                                    </call>
+                                    <call functionName="CreatePos">
+                                    <call functionName="RandomDouble">
+                                    <integer value="0"/>
+                                    <call functionName="PosGetX">
+
+                                    <call functionName="GetMapDimension"/>
+                                    </call>
+                                    </call>
+                                    <call functionName="RandomDouble">
+                                    <integer value="0"/>
+                                    <call functionName="PosGetY">
+
+                                    <call functionName="GetMapDimension"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="beute" id="FunctionArgument_26">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="i" id="FunctionArgument_22">
+                                    <doubleType/>
+                                    </parameter>
+                                </parametricFunction>
+                                <double value="0.0"/>
+                                <call functionName="GetVariable">
+                                    <variableID external="false"
+                                    writeable="false" id="BodyVariableClass_16"/>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="ForTimes">
+                                <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="CreateObjectAndRemember">
+                                    <objectInstance
+                                    id="ResourceInstance_0" objectClassID="ResourceClass_0">
+                                    <featureInstance
+                                    featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                                    xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <spatialInfo
+                                    speed="10.0"
+                                    direction="0.0"
+                                    drawPriority="3.0"
+                                    imageStyle="2"
+                                    shapeStyle="0"
+                                    x="0.0" y="0.0">
+                                    <figure
+                                    direction="0.0"
+                                    radius="10.0" xsi:type="XMLCircle">
+
+                                    <balancePoint
+                                    x="10.0" y="10.0"/>
+                                    <position
+                                    x="0.0" y="0.0"/>
+                                    </figure>
+                                    <shapeColor
+                                    red="0"
+                                    green="0" blue="0"/>
+                                    </spatialInfo>
+                                    </featureInstance>
+                                    </objectInstance>
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="BeamTo">
+                                    <call functionName="GetSpatialInfo">
+                                    <parameterID id="FunctionArgument_27"/>
+                                    </call>
+                                    <call functionName="CreatePos">
+                                    <call functionName="RandomDouble">
+                                    <integer value="0"/>
+                                    <call functionName="PosGetX">
+
+                                    <call functionName="GetMapDimension"/>
+                                    </call>
+                                    </call>
+                                    <call functionName="RandomDouble">
+                                    <integer value="0"/>
+                                    <call functionName="PosGetY">
+
+                                    <call functionName="GetMapDimension"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="höhle" id="FunctionArgument_27">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="i" id="FunctionArgument_23">
+                                    <doubleType/>
+                                    </parameter>
+                                </parametricFunction>
+                                <double value="0.0"/>
+                                <call functionName="GetVariable">
+                                    <variableID external="false"
+                                    writeable="false" id="BodyVariableClass_18"/>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="ForTimes">
+                                <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="CreateObjectAndRemember">
+                                    <objectInstance
+                                    id="ActivityAgentInstance_1" objectClassID="ActivityAgentClass_0">
+                                    <bodyVariableInstance bodyVariableClassID="BodyVariableClass_1"/>
+                                    <bodyVariableInstance bodyVariableClassID="BodyVariableClass_2"/>
+                                    <bodyVariableInstance bodyVariableClassID="BodyVariableClass_3"/>
+                                    <featureInstance
+                                    featureObjectClassID="SpatialInfoObjectFeatureClass_2"
+                                    xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <spatialInfo
+                                    speed="10.0"
+                                    direction="0.0"
+                                    drawPriority="3.0"
+                                    imageStyle="2"
+                                    shapeStyle="1"
+                                    x="0.0" y="0.0">
+                                    <figure
+                                    direction="0.0"
+                                    sideLength="10.0" xsi:type="XMLSquare">
+
+                                    <balancePoint
+                                    x="5.0" y="5.0"/>
+                                    <position
+                                    x="0.0" y="0.0"/>
+                                    </figure>
+                                    <shapeColor
+                                    red="255"
+                                    green="0" blue="0"/>
+                                    </spatialInfo>
+                                    </featureInstance>
+                                    </objectInstance>
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="BeamTo">
+                                    <call functionName="GetSpatialInfo">
+                                    <parameterID id="FunctionArgument_28"/>
+                                    </call>
+                                    <call functionName="CreatePos">
+                                    <call functionName="RandomDouble">
+                                    <integer value="0"/>
+                                    <call functionName="PosGetX">
+
+                                    <call functionName="GetMapDimension"/>
+                                    </call>
+                                    </call>
+                                    <call functionName="RandomDouble">
+                                    <integer value="0"/>
+                                    <call functionName="PosGetY">
+
+                                    <call functionName="GetMapDimension"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="jäger" id="FunctionArgument_28">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="i" id="FunctionArgument_24">
+                                    <doubleType/>
+                                    </parameter>
+                                </parametricFunction>
+                                <double value="0.0"/>
+                                <call functionName="GetVariable">
+                                    <variableID external="false"
+                                    writeable="false" id="BodyVariableClass_17"/>
+                                </call>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <actionRule>
+                        <action>
+                            <call functionName="ForTimes">
+                                <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="CreateObjectAndRemember">
+                                    <objectInstance
+                                    id="ResourceInstance_1" objectClassID="ResourceClass_1">
+                                    <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+                                    <featureInstance
+                                    featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                                    xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <spatialInfo
+                                    speed="10.0"
+                                    direction="0.0"
+                                    drawPriority="3.0"
+                                    imageStyle="2"
+                                    shapeStyle="1"
+                                    x="0.0" y="0.0">
+                                    <figure
+                                    direction="0.0"
+                                    radius="10.0" xsi:type="XMLCircle">
+
+                                    <balancePoint
+                                    x="10.0" y="10.0"/>
+                                    <position
+                                    x="0.0" y="0.0"/>
+                                    </figure>
+                                    <shapeColor
+                                    red="204"
+                                    green="0" blue="204"/>
+                                    </spatialInfo>
+                                    </featureInstance>
+                                    </objectInstance>
+                                    <parametricFunction>
+                                    <functionCall>
+                                    <call functionName="BeamTo">
+                                    <call functionName="GetSpatialInfo">
+                                    <parameterID id="FunctionArgument_29"/>
+                                    </call>
+                                    <call functionName="CreatePos">
+                                    <call functionName="RandomDouble">
+                                    <integer value="0"/>
+                                    <call functionName="PosGetX">
+
+                                    <call functionName="GetMapDimension"/>
+                                    </call>
+                                    </call>
+                                    <call functionName="RandomDouble">
+                                    <integer value="0"/>
+                                    <call functionName="PosGetY">
+
+                                    <call functionName="GetMapDimension"/>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="jäger" id="FunctionArgument_29">
+                                    <simObjectType/>
+                                    </parameter>
+                                    </parametricFunction>
+                                    </call>
+                                    </functionCall>
+                                    <parameter name="i" id="FunctionArgument_25">
+                                    <doubleType/>
+                                    </parameter>
+                                </parametricFunction>
+                                <double value="0.0"/>
+                                <double value="100.0"/>
+                            </call>
+                        </action>
+                    </actionRule>
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <actionActivity name="Beobachten"
+                    id="ActionActivityGraphLeaf_11" x="308" y="91"
+                    width="90" height="70">
+                    <stayTime>
+                        <double value="1.0"/>
+                    </stayTime>
+                </actionActivity>
+                <chainRule toActivityID="ActionActivityGraphLeaf_10" fromActivityID="EntryActivityGraphLeaf_2">
+                    <precondition>
+                        <call functionName="Not">
+                            <call functionName="GetVariable">
+                                <variableID external="false" id="BodyVariableClass_11"/>
+                            </call>
+                        </call>
+                    </precondition>
+                </chainRule>
+                <chainRule toActivityID="ActionActivityGraphLeaf_11" fromActivityID="ActionActivityGraphLeaf_10">
+                    <precondition>
+                        <boolean value="true"/>
+                    </precondition>
+                </chainRule>
+                <otherwiseChainRule
+                    toActivityID="ActionActivityGraphLeaf_11" fromDecisionActivityID="EntryActivityGraphLeaf_2"/>
+            </composedActivity>
+        </reasoning>
+    </worldClass>
+    <situation name="Test-Welt" id="Situation_0">
+        <worldInstance id="ActivityWorldInstance_0" objectClassID="ActivityWorldClass_0">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_11"/>
+            <bodyVariableInstance usesOwnDefaulValue="true" bodyVariableClassID="BodyVariableClass_12">
+                <defaultValue>
+                    <double value="110.0"/>
+                </defaultValue>
+            </bodyVariableInstance>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_13"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_14"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_15"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_16"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_17"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_18"/>
+            <featureInstance
+                featureObjectClassID="SpatialMapFeatureClass_0"
+                torus="true" drawGrid="false" discrete="false"
+                rotateImages="true" centeredPos="true" tiled="false"
+                horizontalTiles="1" verticalTiles="1"
+                xsi:type="XMLSpatialMapFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <mapSize width="1000.0" height="1000.0"/>
+                <gridCols value="10"/>
+                <gridRows value="10"/>
+            </featureInstance>
+        </worldInstance>
+        <objectInstance id="ResourceInstance_2" objectClassID="ResourceClass_0">
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="109.31174089068826" y="168.0161943319838">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="109.31174089068826" y="168.0161943319838"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="0"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_3" objectClassID="ResourceClass_0">
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="651.8218623481781" y="149.79757085020242">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="651.8218623481781" y="149.79757085020242"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="0"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_4" objectClassID="ResourceClass_0">
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="722.6720647773279" y="489.87854251012146">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="722.6720647773279" y="489.87854251012146"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="0"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_5" objectClassID="ResourceClass_0">
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="356.27530364372467" y="686.2348178137652">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="356.27530364372467" y="686.2348178137652"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="0"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_6" objectClassID="ResourceClass_0">
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="655.8704453441295" y="819.8380566801619">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="655.8704453441295" y="819.8380566801619"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="0"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_7" objectClassID="ResourceClass_0">
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="406.8825910931174" y="390.68825910931173">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="406.8825910931174" y="390.68825910931173"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="0"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_8" objectClassID="ResourceClass_0">
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_0"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="76.92307692307692" y="627.5303643724696">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="76.92307692307692" y="627.5303643724696"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="0"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ActivityAgentInstance_2" objectClassID="ActivityAgentClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_4"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_5"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_6"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_7"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_8"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_9"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_10"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_3"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="1"
+                    x="267.20647773279353" y="107.28744939271255">
+                    <figure direction="0.0" sideLength="10.0" xsi:type="XMLSquare">
+                        <balancePoint x="5.0" y="5.0"/>
+                        <position x="267.20647773279353" y="107.28744939271255"/>
+                    </figure>
+                    <shapeColor red="51" green="204" blue="0"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ActivityAgentInstance_3" objectClassID="ActivityAgentClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_4"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_5"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_6"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_7"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_8"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_9"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_10"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_3"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="1"
+                    x="653.8461538461538" y="289.4736842105263">
+                    <figure direction="0.0" sideLength="10.0" xsi:type="XMLSquare">
+                        <balancePoint x="5.0" y="5.0"/>
+                        <position x="653.8461538461538" y="289.4736842105263"/>
+                    </figure>
+                    <shapeColor red="51" green="204" blue="0"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ActivityAgentInstance_4" objectClassID="ActivityAgentClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_4"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_5"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_6"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_7"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_8"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_9"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_10"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_3"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="1"
+                    x="536.4372469635628" y="631.578947368421">
+                    <figure direction="0.0" sideLength="10.0" xsi:type="XMLSquare">
+                        <balancePoint x="5.0" y="5.0"/>
+                        <position x="536.4372469635628" y="631.578947368421"/>
+                    </figure>
+                    <shapeColor red="51" green="204" blue="0"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ActivityAgentInstance_5" objectClassID="ActivityAgentClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_4"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_5"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_6"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_7"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_8"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_9"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_10"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_3"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="1"
+                    x="127.53036437246963" y="775.3036437246964">
+                    <figure direction="0.0" sideLength="10.0" xsi:type="XMLSquare">
+                        <balancePoint x="5.0" y="5.0"/>
+                        <position x="127.53036437246963" y="775.3036437246964"/>
+                    </figure>
+                    <shapeColor red="51" green="204" blue="0"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ActivityAgentInstance_6" objectClassID="ActivityAgentClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_4"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_5"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_6"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_7"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_8"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_9"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_10"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_3"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="1"
+                    x="925.1012145748988" y="785.4251012145749">
+                    <figure direction="0.0" sideLength="10.0" xsi:type="XMLSquare">
+                        <balancePoint x="5.0" y="5.0"/>
+                        <position x="925.1012145748988" y="785.4251012145749"/>
+                    </figure>
+                    <shapeColor red="51" green="204" blue="0"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ActivityAgentInstance_7" objectClassID="ActivityAgentClass_0">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_1"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_2"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_3"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_2"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="1"
+                    x="404.8582995951417" y="182.18623481781376">
+                    <figure direction="0.0" sideLength="10.0" xsi:type="XMLSquare">
+                        <balancePoint x="5.0" y="5.0"/>
+                        <position x="404.8582995951417" y="182.18623481781376"/>
+                    </figure>
+                    <shapeColor red="255" green="0" blue="0"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_9" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="597.165991902834" y="121.4574898785425">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="597.165991902834" y="121.4574898785425"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_10" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="661.9433198380567" y="168.0161943319838">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="661.9433198380567" y="168.0161943319838"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_11" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="582.9959514170041" y="190.2834008097166">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="582.9959514170041" y="190.2834008097166"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_12" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="763.1578947368421" y="467.6113360323887">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="763.1578947368421" y="467.6113360323887"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_13" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="493.92712550607285" y="489.87854251012146">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="493.92712550607285" y="489.87854251012146"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_14" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="935.2226720647774" y="240.8906882591093">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="935.2226720647774" y="240.8906882591093"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_15" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="959.5141700404859" y="558.7044534412955">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="959.5141700404859" y="558.7044534412955"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_16" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="360.3238866396761" y="821.8623481781376">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="360.3238866396761" y="821.8623481781376"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_17" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="180.16194331983806" y="641.7004048582996">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="180.16194331983806" y="641.7004048582996"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_18" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="89.06882591093117" y="465.58704453441294">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="89.06882591093117" y="465.58704453441294"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_19" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="228.74493927125505" y="309.7165991902834">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="228.74493927125505" y="309.7165991902834"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_20" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="82.99595141700405" y="267.20647773279353">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="82.99595141700405" y="267.20647773279353"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_21" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="70.8502024291498" y="76.92307692307692">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="70.8502024291498" y="76.92307692307692"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_22" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="178.13765182186233" y="141.7004048582996">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="178.13765182186233" y="141.7004048582996"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_23" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="313.95348837209303" y="247.093023255814">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="313.95348837209303" y="247.093023255814"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_24" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="500.00000000000006" y="305.2325581395349">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="500.00000000000006" y="305.2325581395349"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_25" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="630.8139534883721" y="369.1860465116279">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="630.8139534883721" y="369.1860465116279"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_26" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="630.8139534883721" y="549.4186046511628">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="630.8139534883721" y="549.4186046511628"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_27" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="389.5348837209303" y="540.6976744186047">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="389.5348837209303" y="540.6976744186047"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_28" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="569.7674418604652" y="805.232558139535">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="569.7674418604652" y="805.232558139535"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_29" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="799.4186046511629" y="770.3488372093024">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="799.4186046511629" y="770.3488372093024"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_30" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="793.6507936507937" y="218.25396825396825">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="793.6507936507937" y="218.25396825396825"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_31" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="914.6825396825398" y="376.984126984127">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="914.6825396825398" y="376.984126984127"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+        <objectInstance id="ResourceInstance_32" objectClassID="ResourceClass_1">
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_0"/>
+            <featureInstance
+                featureObjectClassID="SpatialInfoObjectFeatureClass_1"
+                xsi:type="XMLSpatialInfoFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <spatialInfo speed="10.0" direction="0.0"
+                    drawPriority="3.0" imageStyle="2" shapeStyle="0"
+                    x="722.2222222222223" y="599.2063492063493">
+                    <figure direction="0.0" radius="10.0" xsi:type="XMLCircle">
+                        <balancePoint x="10.0" y="10.0"/>
+                        <position x="722.2222222222223" y="599.2063492063493"/>
+                    </figure>
+                    <shapeColor red="0" green="0" blue="204"/>
+                </spatialInfo>
+            </featureInstance>
+        </objectInstance>
+    </situation>
+    <situation name="Spielwelt" id="Situation_1">
+        <worldInstance id="ActivityWorldInstance_1" objectClassID="ActivityWorldClass_0">
+            <bodyVariableInstance usesOwnDefaulValue="true" bodyVariableClassID="BodyVariableClass_11">
+                <defaultValue>
+                    <boolean value="false"/>
+                </defaultValue>
+            </bodyVariableInstance>
+            <bodyVariableInstance usesOwnDefaulValue="true" bodyVariableClassID="BodyVariableClass_12">
+                <defaultValue>
+                    <double value="90.0"/>
+                </defaultValue>
+            </bodyVariableInstance>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_13"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_14"/>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_15"/>
+            <bodyVariableInstance usesOwnDefaulValue="true" bodyVariableClassID="BodyVariableClass_16">
+                <defaultValue>
+                    <double value="100.0"/>
+                </defaultValue>
+            </bodyVariableInstance>
+            <bodyVariableInstance usesOwnDefaulValue="true" bodyVariableClassID="BodyVariableClass_17">
+                <defaultValue>
+                    <double value="10.0"/>
+                </defaultValue>
+            </bodyVariableInstance>
+            <bodyVariableInstance bodyVariableClassID="BodyVariableClass_18"/>
+            <featureInstance
+                featureObjectClassID="SpatialMapFeatureClass_0"
+                torus="true" drawGrid="false" discrete="false"
+                rotateImages="true" centeredPos="true" tiled="false"
+                horizontalTiles="1" verticalTiles="1"
+                xsi:type="XMLSpatialMapFeatureInstance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <mapSize width="1000.0" height="1000.0"/>
+                <gridCols value="10"/>
+                <gridRows value="10"/>
+            </featureInstance>
+        </worldInstance>
+    </situation>
+    <simulation id="Simulation_0" startSituationID="Situation_1" test="false"/>
+    <interactiveSimulation name="InteractiveSim[Sim [Spielwelt]]"
+        id="InteractiveSimulation_0" simulationID="Simulation_0">
+        <userinterface name="UserInterface" id="UserInterface_0">
+            <layoutSetting x="0" y="0" width="1005" height="545"/>
+            <interactionElement id="InteractionElementInstance_0" interactionElementClassDeclaration="InteractionElementClass_0">
+                <subElements id="InteractionElementInstance_1" interactionElementClassDeclaration="InteractionElementClass_1">
+                    <layout x="0" y="0" width="316" height="53"/>
+                    <config id="doubleTypeSlider" name="Config">
+                        <configItem>
+                            <id>enableBorder</id>
+                            <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>borderColor</id>
+                            <value red="0" green="0" blue="0"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>backgroundColor</id>
+                            <value red="236" green="233" blue="216"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>caption</id>
+                            <value value="Sichtweite der Beute"
+                                xsi:type="XMLString" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>captionAlignment</id>
+                            <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <fullClassName>de.uniwue.ki.util.EAlignment</fullClassName>
+                                <value>LEFT</value>
+                            </value>
+                        </configItem>
+                        <subConfigs id="slider" name="Slider">
+                            <configItem>
+                                <id>minValue</id>
+                                <value value="0" xsi:type="XMLInteger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                            <configItem>
+                                <id>maxValue</id>
+                                <value value="100" xsi:type="XMLInteger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                            <configItem>
+                                <id>tickSpace</id>
+                                <value value="25" xsi:type="XMLInteger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                            <configItem>
+                                <id>orientation</id>
+                                <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <fullClassName>de.uniwue.ki.util.EOrientation</fullClassName>
+                                    <value>HORIZONTAL</value>
+                                </value>
+                            </configItem>
+                            <configItem>
+                                <id>invert</id>
+                                <value value="false"
+                                    xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                        </subConfigs>
+                    </config>
+                </subElements>
+                <layout x="525" y="307" width="316" height="53"/>
+                <config id="Container" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="false" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundStyle</id>
+                        <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <fullClassName>de.uniwue.ki.gui.util.image.EBackGroundStyle</fullClassName>
+                            <value>CENTER</value>
+                        </value>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement id="InteractionElementInstance_2" interactionElementClassDeclaration="InteractionElementClass_2">
+                <subElements id="InteractionElementInstance_3" interactionElementClassDeclaration="InteractionElementClass_3">
+                    <layout x="0" y="0" width="323" height="53"/>
+                    <config id="doubleTypeSlider" name="Config">
+                        <configItem>
+                            <id>enableBorder</id>
+                            <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>borderColor</id>
+                            <value red="0" green="0" blue="0"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>backgroundColor</id>
+                            <value red="236" green="233" blue="216"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>caption</id>
+                            <value value="Sichtweite der Räuber"
+                                xsi:type="XMLString" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>captionAlignment</id>
+                            <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <fullClassName>de.uniwue.ki.util.EAlignment</fullClassName>
+                                <value>LEFT</value>
+                            </value>
+                        </configItem>
+                        <subConfigs id="slider" name="Slider">
+                            <configItem>
+                                <id>minValue</id>
+                                <value value="0" xsi:type="XMLInteger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                            <configItem>
+                                <id>maxValue</id>
+                                <value value="100" xsi:type="XMLInteger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                            <configItem>
+                                <id>tickSpace</id>
+                                <value value="25" xsi:type="XMLInteger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                            <configItem>
+                                <id>orientation</id>
+                                <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <fullClassName>de.uniwue.ki.util.EOrientation</fullClassName>
+                                    <value>HORIZONTAL</value>
+                                </value>
+                            </configItem>
+                            <configItem>
+                                <id>invert</id>
+                                <value value="false"
+                                    xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                        </subConfigs>
+                    </config>
+                </subElements>
+                <layout x="525" y="362" width="323" height="53"/>
+                <config id="Container" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="false" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundStyle</id>
+                        <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <fullClassName>de.uniwue.ki.gui.util.image.EBackGroundStyle</fullClassName>
+                            <value>CENTER</value>
+                        </value>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement id="InteractionElementInstance_4" interactionElementClassDeclaration="InteractionElementClass_4">
+                <subElements id="InteractionElementInstance_5" interactionElementClassDeclaration="InteractionElementClass_5">
+                    <layout x="0" y="0" width="145" height="32"/>
+                    <config id="Textfield" name="Config">
+                        <configItem>
+                            <id>enableBorder</id>
+                            <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>borderColor</id>
+                            <value red="0" green="0" blue="0"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>backgroundColor</id>
+                            <value red="236" green="233" blue="216"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>caption</id>
+                            <value value="Anzahl Beute"
+                                xsi:type="XMLString" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>captionAlignment</id>
+                            <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <fullClassName>de.uniwue.ki.util.EAlignment</fullClassName>
+                                <value>LEFT</value>
+                            </value>
+                        </configItem>
+                        <subConfigs id="textfield" name="Textfield">
+                            <configItem>
+                                <id>fractionDigits</id>
+                                <value value="4" xsi:type="XMLInteger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                        </subConfigs>
+                    </config>
+                </subElements>
+                <layout x="526" y="150" width="145" height="32"/>
+                <config id="Container" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="false" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundStyle</id>
+                        <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <fullClassName>de.uniwue.ki.gui.util.image.EBackGroundStyle</fullClassName>
+                            <value>CENTER</value>
+                        </value>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement id="InteractionElementInstance_6" interactionElementClassDeclaration="InteractionElementClass_6">
+                <subElements id="InteractionElementInstance_7" interactionElementClassDeclaration="InteractionElementClass_7">
+                    <layout x="0" y="0" width="152" height="32"/>
+                    <config id="Textfield" name="Config">
+                        <configItem>
+                            <id>enableBorder</id>
+                            <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>borderColor</id>
+                            <value red="0" green="0" blue="0"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>backgroundColor</id>
+                            <value red="236" green="233" blue="216"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>caption</id>
+                            <value value="Anzahl Räuber"
+                                xsi:type="XMLString" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>captionAlignment</id>
+                            <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <fullClassName>de.uniwue.ki.util.EAlignment</fullClassName>
+                                <value>LEFT</value>
+                            </value>
+                        </configItem>
+                        <subConfigs id="textfield" name="Textfield">
+                            <configItem>
+                                <id>fractionDigits</id>
+                                <value value="4" xsi:type="XMLInteger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                        </subConfigs>
+                    </config>
+                </subElements>
+                <layout x="526" y="184" width="152" height="32"/>
+                <config id="Container" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="false" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundStyle</id>
+                        <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <fullClassName>de.uniwue.ki.gui.util.image.EBackGroundStyle</fullClassName>
+                            <value>CENTER</value>
+                        </value>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement id="InteractionElementInstance_8" interactionElementClassDeclaration="InteractionElementClass_8">
+                <subElements id="InteractionElementInstance_9" interactionElementClassDeclaration="InteractionElementClass_9">
+                    <layout x="0" y="0" width="150" height="32"/>
+                    <config id="Textfield" name="Config">
+                        <configItem>
+                            <id>enableBorder</id>
+                            <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>borderColor</id>
+                            <value red="0" green="0" blue="0"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>backgroundColor</id>
+                            <value red="236" green="233" blue="216"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>caption</id>
+                            <value value="Anzahl Höhlen"
+                                xsi:type="XMLString" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>captionAlignment</id>
+                            <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <fullClassName>de.uniwue.ki.util.EAlignment</fullClassName>
+                                <value>LEFT</value>
+                            </value>
+                        </configItem>
+                        <subConfigs id="textfield" name="Textfield">
+                            <configItem>
+                                <id>fractionDigits</id>
+                                <value value="4" xsi:type="XMLInteger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            </configItem>
+                        </subConfigs>
+                    </config>
+                </subElements>
+                <layout x="526" y="218" width="150" height="32"/>
+                <config id="Container" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="false" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundStyle</id>
+                        <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <fullClassName>de.uniwue.ki.gui.util.image.EBackGroundStyle</fullClassName>
+                            <value>CENTER</value>
+                        </value>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement id="InteractionElementInstance_10" interactionElementClassDeclaration="InteractionElementClass_10">
+                <subElements id="InteractionElementInstance_11" interactionElementClassDeclaration="InteractionElementClass_11">
+                    <layout x="0" y="0" width="517" height="500"/>
+                    <config id="SpatialMapWidget" name="Config">
+                        <configItem>
+                            <id>enableBorder</id>
+                            <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>borderColor</id>
+                            <value red="0" green="0" blue="0"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                        <configItem>
+                            <id>backgroundColor</id>
+                            <value red="236" green="233" blue="216"
+                                xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </configItem>
+                    </config>
+                </subElements>
+                <layout x="2" y="2" width="517" height="500"/>
+                <config id="Container" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="false" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundStyle</id>
+                        <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <fullClassName>de.uniwue.ki.gui.util.image.EBackGroundStyle</fullClassName>
+                            <value>CENTER</value>
+                        </value>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement id="InteractionElementInstance_12" interactionElementClassDeclaration="InteractionElementClass_13">
+                <layout x="527" y="129" width="189" height="21"/>
+                <config id="HTMLTextWidget" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="false" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>text</id>
+                        <value value="&lt;b>Anfangswerte&lt;/b>"
+                            xsi:type="XMLString" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement id="InteractionElementInstance_13" interactionElementClassDeclaration="InteractionElementClass_14">
+                <layout x="525" y="288" width="104" height="19"/>
+                <config id="HTMLTextWidget" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="false" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>text</id>
+                        <value value="&lt;b>Einstellungen&lt;/b>"
+                            xsi:type="XMLString" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement id="InteractionElementInstance_14" interactionElementClassDeclaration="InteractionElementClass_15">
+                <layout x="525" y="4" width="176" height="36"/>
+                <config id="StartPauseSim" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement id="InteractionElementInstance_15" interactionElementClassDeclaration="InteractionElementClass_16">
+                <layout x="706" y="3" width="98" height="40"/>
+                <config id="ResetSim" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement id="InteractionElementInstance_16" interactionElementClassDeclaration="InteractionElementClass_17">
+                <layout x="525" y="82" width="160" height="28"/>
+                <config id="ObjectCount" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement id="InteractionElementInstance_17" interactionElementClassDeclaration="InteractionElementClass_18">
+                <layout x="525" y="53" width="118" height="28"/>
+                <config id="SimTime" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <widgetID>UIDeclarationPanel</widgetID>
+            <config id="UIDeclarationPanel" name="Config">
+                <configItem>
+                    <id>enableBorder</id>
+                    <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </configItem>
+                <configItem>
+                    <id>borderColor</id>
+                    <value red="0" green="0" blue="0"
+                        xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </configItem>
+                <configItem>
+                    <id>backgroundColor</id>
+                    <value red="236" green="233" blue="216"
+                        xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </configItem>
+                <configItem>
+                    <id>backgroundStyle</id>
+                    <value xsi:type="XMLJavaEnum" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <fullClassName>de.uniwue.ki.gui.util.image.EBackGroundStyle</fullClassName>
+                        <value>CENTER</value>
+                    </value>
+                </configItem>
+            </config>
+        </userinterface>
+        <interactionElementClasses>
+            <interactionElement name="Untitled Interaction Element" id="InteractionElementClass_12">
+                <layout x="0" y="0" width="0" height="0"/>
+                <widgetID>StaticTextWidget</widgetID>
+                <config id="StaticTextWidget" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="false" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>staticText</id>
+                        <value value="Text" xsi:type="XMLString" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement name="Untitled Interaction Element" id="InteractionElementClass_13">
+                <layout x="0" y="0" width="0" height="0"/>
+                <widgetID>HTMLTextWidget</widgetID>
+                <config id="HTMLTextWidget" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="false" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>text</id>
+                        <value value="Text" xsi:type="XMLString" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement name="Untitled Interaction Element" id="InteractionElementClass_14">
+                <layout x="0" y="0" width="0" height="0"/>
+                <widgetID>HTMLTextWidget</widgetID>
+                <config id="HTMLTextWidget" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="false" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>text</id>
+                        <value value="Text" xsi:type="XMLString" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement name="Untitled Interaction Element" id="InteractionElementClass_15">
+                <layout x="0" y="0" width="0" height="0"/>
+                <widgetID>StartPauseSim</widgetID>
+                <config id="StartPauseSim" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement name="Untitled Interaction Element" id="InteractionElementClass_16">
+                <layout x="0" y="0" width="0" height="0"/>
+                <widgetID>ResetSim</widgetID>
+                <config id="ResetSim" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement name="Untitled Interaction Element" id="InteractionElementClass_17">
+                <layout x="0" y="0" width="0" height="0"/>
+                <widgetID>ObjectCount</widgetID>
+                <config id="ObjectCount" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                </config>
+            </interactionElement>
+            <interactionElement name="Untitled Interaction Element" id="InteractionElementClass_18">
+                <layout x="0" y="0" width="0" height="0"/>
+                <widgetID>SimTime</widgetID>
+                <config id="SimTime" name="Config">
+                    <configItem>
+                        <id>enableBorder</id>
+                        <value value="true" xsi:type="XMLBoolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>borderColor</id>
+                        <value red="0" green="0" blue="0"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                    <configItem>
+                        <id>backgroundColor</id>
+                        <value red="236" green="233" blue="216"
+                            xsi:type="XMLColor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </configItem>
+                </config>
+            </interactionElement>
+        </interactionElementClasses>
+    </interactiveSimulation>
+</XMLSeSAmModel>

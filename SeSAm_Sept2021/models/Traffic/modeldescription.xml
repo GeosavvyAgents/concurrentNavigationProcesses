@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<Model> 
+    <Title>Traffic</Title> 
+    <ModelFile>traffic.xml</ModelFile> 
+    <Image> 
+        <Path>traffic.gif</Path> 
+        <ImageTitle>Traffic Model</ImageTitle> 
+    </Image> 
+    
+    <Description>A simple traffic model that shows the interaction of driver agents. Different car types symbolize different preferred speeds. </Description> 
+</Model> 

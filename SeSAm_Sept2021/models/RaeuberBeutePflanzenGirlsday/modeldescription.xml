@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Model>
+    <Title>Hunter-Prey with plants</Title>
+    <ModelFile>raeuberbeute_pflanzen.xml</ModelFile>
+    <Image>
+        <Path>teaser.png</Path>
+        <ImageTitle>Interactive control of environment parameters</ImageTitle>
+    </Image>
+    <Description>The model was created during the Girlsday 2007 and improves the simple "Hunter-Prey"-model to a foodweb containing plants ("Pflanze") that are eaten by Prey-Agents. This model can easily be extended by re-filling plant-population, strategies of agents evaluating security versus hunger requirements...</Description>
+</Model>

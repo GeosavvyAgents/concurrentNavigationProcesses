@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Model>
+    <Title>Life and Death on Sugarscape</Title>
+    <ModelFile>LifeAndDeathOnSugarscape6.xml</ModelFile>
+    <Image>
+        <Path>sugarscape.jpg</Path>
+        <ImageTitle>Example 50x50</ImageTitle>
+    </Image>
+    <Description>
+    This model implements parts of the first chapter of the famous book "Growing Artificial Societies" by 
+    Epstein/Axtell. Agents (red circles) possess local perception and head for the highest sugar storages 
+    in their environment. In the classical configuration there are two sugar-hills with high sugar 
+    production (yellow).
+</Description>
+</Model>

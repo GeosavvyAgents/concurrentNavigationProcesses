@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Model>
+	<Title>Highrack Storage</Title>
+	<ModelFile>ExampleStorage.xml</ModelFile>
+	<Image>
+		<Path>delivery.gif</Path>
+		<ImageTitle>Delivery</ImageTitle>
+	</Image>
+	<Image>
+		<Path>rollin.gif</Path>
+		<ImageTitle>High-Rack lanes</ImageTitle>
+	</Image>
+	<Image>
+		<Path>dispatch.gif</Path>
+		<ImageTitle>Dispatching</ImageTitle>
+	</Image>
+<Description> This model was the first prototype for a simulation of a highrack 
+storage. Boxes and racks and conveyers are realized as agents and 
+ressources. The aim was to create a virtual storage house for the 
+following purposes:
+
+1) Testing a new storage control software.
+2) Presenting storage layouts.
+3) Introducing the software at the customers site.
+</Description>
+</Model>

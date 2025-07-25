@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Model>
+    <Title>Hunter-Prey</Title>
+    <ModelFile>raeuberbeute_einfach.xml</ModelFile>
+    <Image>
+        <Path>teaser.png</Path>
+        <ImageTitle>Interactive hunter-prey model</ImageTitle>
+    </Image>
+    <Description>This is a small predator ("Jaeger") - prey ("Beute") model in German that was developed as a play ground for school students. Predators perform a random walk until they perceive a prey that is pursued until it is killed or until it vanishes in a hole. Preys also perform a random walk. When they perceive  a predator they search for the next hole and try to reach it.</Description>
+</Model>
