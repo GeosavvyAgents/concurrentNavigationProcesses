@@ -4,4 +4,8 @@ This repository contains the code needed to run an agent-based model of concurre
 
 If you want to run the code, you will have to install Java 1.8 on your machine, download the repository, start SeSAm.jar and then load the model file called campus_objectGraph_vXX.xml, where XX is a number (as of Jul 2025, this number is 94). The newest version at the time of the conference is number 115.
 
-The presentation from the conference may be found here as well. In addition, we added screenshots of the model simulation.
+The presentation from the conference may be found here as ConcurrentReasonersABM.pdf. In addition, we added screenshots of the model simulation - to be found in the folder screenshots.
+
+The publication of the conference proceedings is expected in July 2026 (according to the Springer website):
+Part I https://link.springer.com/book/9783032228161
+Part II https://link.springer.com/book/9783032228192
